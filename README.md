@@ -1,0 +1,2 @@
+# nixpkgs-config
+~/.config/nixpkgs
