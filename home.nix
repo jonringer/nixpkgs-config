@@ -27,17 +27,37 @@ in
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    binutils
+    cargo
+    chromium
+    cmake
+    dbus
+    direnv
+    discord
+    enlightenment.terminology
+    firefox
+    git
+    gnumake
+    htop
+    ntfs3g
     exa
     fd
     cabal-install
     jetbrains.pycharm-community
     jetbrains.rider
     ghc
+    mono
     openal
     python36
     spotify
     stack
+    steam
+    tree
+    usbutils
     vlc
+    vscode
+    wget
+    xpdf
 
     # vim plugin dependencies
     fzf
