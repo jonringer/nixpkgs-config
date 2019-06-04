@@ -27,7 +27,9 @@ in
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # system
     binutils
+    cabal-install
     cargo
     chromium
     cmake
@@ -35,29 +37,29 @@ in
     direnv
     discord
     enlightenment.terminology
-    firefox
+    exa
+    fd
     git
     gnumake
     htop
-    ntfs3g
-    exa
-    fd
-    cabal-install
     jetbrains.pycharm-community
     jetbrains.rider
+    ntfs3g
     ghc
     mono
     openal
     python36
     spotify
     stack
-    steam
     tree
     usbutils
     vlc
-    vscode
     wget
     xpdf
+
+    # games
+    seam
+    lutris
 
     # vim plugin dependencies
     fzf
@@ -179,6 +181,9 @@ in
 
           # Csharp
           customPlugins.omnisharp-vim # not added yet :)
+
+          # python
+          vim-flake8
         ];
       };
 
