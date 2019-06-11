@@ -20,6 +20,17 @@ let
                    call OmniSharp#py#bootstrap()"
     '';
   };
+  indentLine = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "indentLine";
+    version = "2019-02-22";
+    src = pkgs.fetchFromGitHub {
+      owner = "Yggdroot";
+      repo = "indentLine";
+      rev = "47648734706fb2cd0e4d4350f12157d1e5f4c465";
+      sha256 = "0739hdvdfa1lm209q4sl75jvmf2k03cvlka7wv1gwnfl00krvszs";
+    };
+  };
+
 in
 {
   enable = true;
@@ -39,11 +50,15 @@ in
         tabular
         vim-better-whitespace
         vim-multiple-cursors
+        vim-surround
         vimproc
         vimproc-vim
 
         # themes
         wombat256
+
+        # Visual additions
+        indentLine
 
         # language packages
         # Haskell
@@ -58,6 +73,9 @@ in
 
         # Csharp
         customPlugins.omnisharp-vim # not added yet :)
+
+        # Python
+        semshi
       ];
     };
 

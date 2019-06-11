@@ -9,13 +9,17 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-.packages = packages pkgs;
+  home.packages = packages pkgs;
+
+  programs.bash = bashsettings;
+  programs.neovim = vimsettings pkgs;
 
   programs.direnv.enable = true;
   programs.htop.enable = true;
   programs.jq.enable = true;
   programs.ssh.enable = true;
   programs.fzf.enable = true;
+
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
@@ -27,11 +31,10 @@ in
     enable = true;
     userName = "Jonathan Ringer";
     userEmail = "jonringer117@gmail.com";
+    aliases = {
+      co = "checkout";
+    };
   };
-
-  programs.bash = bashsettings;
-
-  programs.neovim = vimsettings pkgs;
 
   xdg.enable = true;
 
