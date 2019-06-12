@@ -47,9 +47,19 @@ in
         bars = [
           { statusCommand = "${pkgs.i3status}/bin/i3status"; }
         ];
+        startup = [
+          { command = "exec firefox"; }
+          { command = "exec steam"; }
+        ];
+        assigns = {
+          "2: web" = [{ class = "^Firefox$"; }];
+          "4" = [{ class = "^Steam$"; }];
+        };
+
         keybindings = let mod = config.modifier; in {
           "${mod}+w" = "exec firefox";
           "${mod}+s" = "exec steam";
+          "${mod}+m" = "exec spotify";
           "${mod}+Return" = "exec terminology";
           "${mod}+c" = "kill";
           "${mod}+Shift+h" = "exec dm-tool switch-to-greeter";
@@ -80,7 +90,7 @@ in
           "${mod}+Shift+f" = "floating toggle";
           "${mod}+space" = "focus mode_toggle";
           "${mod}+1" = "workspace 1";
-          "${mod}+2" = "workspace 2";
+          "${mod}+2" = "workspace \"2: web\"";
           "${mod}+3" = "workspace 3";
           "${mod}+4" = "workspace 4";
           "${mod}+5" = "workspace 5";
@@ -90,7 +100,7 @@ in
           "${mod}+9" = "workspace 9";
           "${mod}+0" = "workspace 10";
           "${mod}+Shift+1" = "move container to workspace 1";
-          "${mod}+Shift+2" = "move container to workspace 2";
+          "${mod}+Shift+2" = "move container to workspace \"2: web\"";
           "${mod}+Shift+3" = "move container to workspace 3";
           "${mod}+Shift+4" = "move container to workspace 4";
           "${mod}+Shift+5" = "move container to workspace 5";
@@ -104,7 +114,7 @@ in
         };
       };
       extraConfig = ''
-        for_window [class="^.*"] border none
+        # for_window [class="^.*"] border none
       '';
     };
   };

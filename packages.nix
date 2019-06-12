@@ -8,7 +8,6 @@ pkgs: with pkgs; [
   dbus
   direnv
   discord
-  enlightenment.terminology
   fd
   firefox
   exa
