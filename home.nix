@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   bashsettings = import ./bash.nix;
@@ -10,6 +10,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = packages pkgs;
+  home.file.".i3status.conf".source = ./.i3status.conf;
 
   programs.bash = bashsettings;
   programs.neovim = vimsettings pkgs;

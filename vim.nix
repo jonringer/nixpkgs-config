@@ -74,6 +74,9 @@ in
         # Csharp
         customPlugins.omnisharp-vim # not added yet :)
 
+        # Powershell
+        vim-ps1
+
         # Python
         semshi
       ];
