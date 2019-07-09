@@ -19,6 +19,7 @@ pkgs: with pkgs; [
   ghc
 
   mono
+  nix-review
   ntfs3g
   openal
   python36
