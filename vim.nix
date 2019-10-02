@@ -1,37 +1,4 @@
 pkgs:
-let
-  customPlugins.omnisharp-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "omnisharp-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "omnisharp";
-      repo = "omnisharp-vim";
-      rev = "6258da895c5d49784d12bae0d7d994bf7ebb5602";
-      sha256 = "1ajgwj248h0lqkl8a3ymgj10iq3fwmxrn6z69d24q7nnif37pva2";
-    };
-    dependences = [ pkgs.libuv pkgs.mono5 ];
-    propagatedBuildInputs = [ pkgs.python3 ];
-    postPatch = ''
-      substituteInPlace python/bootstrap.py \
-        --replace "vim.eval('g:OmniSharp_python_path')" "'~/.omnisharp/log'"
-      substituteInPlace autoload/OmniSharp.vim \
-        --replace "call OmniSharp#py#bootstrap()" \
-                  "let g:OmniSharp_server_path = '~/omni/OmniSharp.exe'
-                   let g:OmniSharp_server_use_mono = 1
-                   call OmniSharp#py#bootstrap()"
-    '';
-  };
-  indentLine = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "indentLine";
-    version = "2019-02-22";
-    src = pkgs.fetchFromGitHub {
-      owner = "Yggdroot";
-      repo = "indentLine";
-      rev = "47648734706fb2cd0e4d4350f12157d1e5f4c465";
-      sha256 = "0739hdvdfa1lm209q4sl75jvmf2k03cvlka7wv1gwnfl00krvszs";
-    };
-  };
-
-in
 {
   enable = true;
   viAlias = true;
@@ -41,24 +8,19 @@ in
       start = [
         fzf-vim
         fzfWrapper
-        gitgutter
         LanguageClient-neovim
         lightline-vim
         nerdtree
         supertab
-        syntastic
         tabular
         vim-better-whitespace
         vim-multiple-cursors
         vim-surround
-        vimproc
-        vimproc-vim
+        #vimproc
+        #vimproc-vim
 
         # themes
         wombat256
-
-        # Visual additions
-        indentLine
 
         # language packages
         # Haskell
@@ -72,7 +34,7 @@ in
         vim-nix
 
         # Csharp
-        customPlugins.omnisharp-vim # not added yet :)
+        vim-csharp
 
         # Powershell
         vim-ps1
@@ -111,6 +73,7 @@ in
 
       let g:haskellmode_completion_ghc = 0
       autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+      autocmd FileType markdown setlocal conceallevel=0
 
       " Tabular bindings
       let g:haskell_tabular = 1

@@ -8,10 +8,12 @@ pkgs: with pkgs; [
   dbus
   direnv
   discord
+  enlightenment.terminology
   fd
   firefox
   exa
   git
+  gnupg                         # gpg command
   gnumake
   htop
   jetbrains.pycharm-community
