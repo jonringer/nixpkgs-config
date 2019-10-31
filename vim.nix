@@ -77,6 +77,7 @@ pkgs:
     vmap <leader>a= :Tabularize /=<CR>
     vmap <leader>a; :Tabularize /::<CR>
     vmap <leader>a- :Tabularize /-><CR>
+    vmap <leader>a# :Tabularize /#<CR>
 
     " fzf bindings
     nnoremap <leader>r :Rg<CR>
