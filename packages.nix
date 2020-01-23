@@ -8,6 +8,7 @@ pkgs: with pkgs; [
   dbus
   direnv
   discord
+  dwarf-fortress-packages.dwarf-fortress-full
   enlightenment.terminology
   fd
   firefox
@@ -34,7 +35,6 @@ pkgs: with pkgs; [
   usbutils
   vlc
   wget
-  xpdf
 
   # vim plugin dependencies
   fzf
