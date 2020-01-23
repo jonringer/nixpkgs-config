@@ -26,6 +26,7 @@ pkgs: with pkgs; [
   nix-review
   ntfs3g
   openal
+  pavucontrol  # pulseaudio configuration
   python36
   rustc
   spotify
