@@ -1,0 +1,255 @@
+;------------------
+;POLYBAR2
+;------------------
+;;---------------------------------------
+;		COLORS
+;---------------------------------------
+
+[colors]
+black = #263238
+white = #D8DEE9
+red = #BF616A
+red1 = #BF3B48
+green = #94AD7D
+green1 = #70AD37
+blue = #5E81AC
+blue1 = #3C6EAC
+cyan = #7AACBA
+cyan1 = #56A4BA
+violet = #B48EAD
+violet1 = #B46AA6
+orange = #D08770
+orange1 = #D06847
+yellow = #CFB074
+yellow1 = #CF9B36
+focus = #8C8C8C
+focus1 = #757575
+unfocus = #1A2328
+unfocus1 = #101010
+;---------------------------------------
+;		GLOBAL
+;---------------------------------------
+
+[bar/nord]
+width = 100%
+height = 24
+bottom = true
+border-size = 0
+background = ${colors.black}
+foreground = ${colors.white}
+fixed-center = true
+line-size = 4
+line-color = #f00
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 1
+;---------------------------------------
+;		FONTS
+;---------------------------------------
+
+font-0 = TerminessTTF Nerd Font:weight=bold:size=10;2
+
+;---------------------------------------
+;	     MODULES LAYOUT
+;---------------------------------------
+modules-left = i3
+modules-right =  cpu memory pulseaudio storage battery date
+modules-center = xwindow
+
+
+;---------------------------------------
+;	     STORAGE
+;---------------------------------------
+[module/storage]
+type = internal/fs
+mount-0 = /
+interval = 20
+format-mounted = <label-mounted>
+label-mounted = "  %free% "
+format-mounted-foreground = ${colors.black}
+format-mounted-background = ${colors.orange}
+format-mounted-underline = ${colors.orange1}
+
+;---------------------------------------
+;	     MEMORY
+;---------------------------------------
+[module/memory]
+type = internal/memory
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+format = <label>
+label = "  %gb_used% "
+format-foreground = ${colors.black}
+format-background = ${colors.green}
+format-underline = ${colors.green1}
+
+;---------------------------------------
+;	     CPU
+;---------------------------------------
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+label = "﬙ %percentage:2%%"
+format-foreground = ${colors.black}
+format-background = ${colors.cyan}
+format-padding = 1
+format-underline = ${colors.cyan1}
+
+;---------------------------------------
+;	     MPD
+;---------------------------------------
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+format-online = <toggle> <label-song>
+;alt icons = 
+format-online-background = ${colors.blue}
+format-online-foreground = ${colors.black}
+format-online-padding = 1
+icon-play = 
+;icon-prev = 
+;icon-next = 
+icon-pause = 
+label-song =  "%{A1:mpc next && mpdfy:}%title:0:40:...%%{A}"
+label-song-ellipsis = true
+;bar-progress-width = 13
+;bar-progress-indicator = ⊙
+;bar-progress-fill = ━
+;bar-progress-empty = ─
+label-offline = mpd is offline
+format-online-underline = ${colors.blue1}
+format-offline-underline = ${colors.white}
+
+;---------------------------------------
+;	     WORKSPACE
+;---------------------------------------
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.focus}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.focus}
+label-focused-foreground = ${colors.black}
+label-focused-underline= ${colors.focus1}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.unfocus}
+label-unfocused-underline= ${colors.unfocus1}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = #5f5f5f
+label-urgent-padding = 2
+
+;---------------------------------------
+;	   XWINDOW
+;---------------------------------------
+[module/xwindow]
+type = internal/xwindow
+format-foreground = ${colors.white}
+format-background = ${colors.black}
+format-padding = 5
+label = %title:0:50:...%
+
+;---------------------------------------
+;	   XBACKLIGHT
+;---------------------------------------
+[module/xbacklight]
+type = internal/xbacklight
+format = <label>
+format-foreground = ${colors.black}
+format-background = ${colors.orange}
+label = " 盛 %percentage%% "
+format-underline = ${colors.orange1}
+
+;---------------------------------------
+;	   DATE
+;---------------------------------------
+[module/date]
+type = internal/date
+interval = 1
+date = %Y-%m-%d
+time = %H:%M
+label = "%{A1:gsimplecal:}  %date%   %time% %{A}"
+format-foreground = ${colors.white}
+format-background = ${colors.black}
+format-underline = ${colors.black}
+
+;---------------------------------------
+;	   VOLUME
+;---------------------------------------
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = <ramp-volume><label-volume>
+format-volume-foreground = ${colors.black}
+format-volume-background = ${colors.yellow}
+label-volume = "%percentage% "
+label-volume-foreground = ${colors.black}
+label-volume-background = ${colors.yellow}
+label-muted = "  mute "
+label-muted-foreground = ${colors.black}
+label-muted-background = ${colors.yellow}
+label-muted-underline = ${colors.yellow1}
+ramp-volume-0 = "  "
+ramp-volume-0-foreground = ${colors.black}
+ramp-volume-0-background = ${colors.yellow}
+ramp-volume-1 = "  "
+ramp-volume-1-foreground = ${colors.black}
+ramp-volume-1-background = ${colors.yellow}
+ramp-volume-2 = "  "
+ramp-volume-2-foreground = ${colors.black}
+ramp-volume-2-background = ${colors.yellow}
+ramp-volume-3 = "  "
+ramp-volume-3-foreground = ${colors.black}
+ramp-volume-3-background = ${colors.yellow}
+format-volume-underline = ${colors.yellow1}
+
+;---------------------------------------
+;	   BATTERY
+;---------------------------------------
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 99
+format-charging = <label-charging>
+format-charging-foreground = ${colors.black}
+format-charging-background = ${colors.red}
+format-full = <label-full>
+format-full-foreground = ${colors.black}
+format-full-background = ${colors.red}
+format-discharging = <label-discharging>
+format-discharging-foreground = ${colors.black}
+format-discharging-background = ${colors.red}
+label-charging = "  %percentage%% "
+label-discharging ="  %percentage%% "
+label-discharging-foreground = ${colors.black}
+label-full = "  %percentage%% "
+
+format-charging-underline = ${colors.red1}
+format-discharging-underline = ${colors.red1}
+format-full-underline = ${colors.red1}

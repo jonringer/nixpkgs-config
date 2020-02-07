@@ -22,6 +22,7 @@ pkgs: with pkgs; [
   ghc
 
   mono
+  nerdfonts
   nix-review
   ntfs3g
   openal

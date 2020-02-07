@@ -8,9 +8,93 @@ in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
   home.packages = packages pkgs;
-  home.file.".i3status.conf".source = ./.i3status.conf;
+
+  services.compton = {
+    enable = true;
+    inactiveOpacity = "0.8";
+    inactiveDim = "0.15";
+  };
+
+  services.polybar = {
+    enable = true;
+    package = pkgs.polybarFull;
+    config = ./polybar-config;
+    script = ''polybar nord &'';
+  };
+
+  programs.alacritty.enable = true;
+
+  programs.alacritty.settings = {
+    keybindings = [
+      { key = "Equals";     mods = "Control";     action = "IncreaseFontSize"; }
+      { key = "Add";        mods = "Control";     action = "IncreaseFontSize"; }
+      { key = "Subtract";   mods = "Control";     action = "DecreaseFontSize"; }
+      { key = "Minus";      mods = "Control";     action = "DecreaseFontSize"; }
+    ];
+
+    colors = {
+      primary = {
+        background =  "0x002b36";
+        foreground =  "0xEBEBEB";
+      };
+
+      normal = {
+        black =    "0x0d0d0d";
+        red =      "0xFF301B";
+        green =    "0xA0E521";
+        yellow =   "0xFFC620";
+        blue =     "0x1BA6FA";
+        magenta =  "0x8763B8";
+        cyan =     "0x21DEEF";
+        white =    "0xEBEBEB";
+      };
+
+      bright = {
+        black =    "0x6D7070";
+        red =      "0xFF4352";
+        green =    "0xB8E466";
+        yellow =   "0xFFD750";
+        blue =     "0x1BA6FA";
+        magenta =  "0xA578EA";
+        cyan =     "0x73FBF1";
+        white =    "0xFEFEF8";
+      };
+    };
+    #colors = {
+    #  primary = {
+    #    background = "0x002b36"; # base03
+    #    foreground = "0x839496"; # base0
+    #  };
+
+    #  cursor = {
+    #    text =   "0x002b36"; # base03
+    #    cursor = "0x839496"; # base0
+    #  };
+
+    #  normal = {
+    #    black=   "0x073642"; # base02
+    #    red=     "0xdc322f"; # red
+    #    green=   "0x859900"; # green
+    #    yellow=  "0xb58900"; # yellow
+    #    blue=    "0x268bd2"; # blue
+    #    magenta= "0xd33682"; # magenta
+    #    cyan=    "0x2aa198"; # cyan
+    #    white=   "0xeee8d5"; # base2
+    #  };
+
+    #  bright= {
+    #    black=   "0x002b36"; # base03
+    #    red=     "0xcb4b16"; # orange
+    #    green=   "0x586e75"; # base01
+    #    yellow=  "0x657b83"; # base00
+    #    blue=    "0x839496"; # base0
+    #    magenta= "0x6c71c4"; # violet
+    #    cyan=    "0x93a1a1"; # base1
+    #    white=   "0xfdf6e3"; # base3
+    #  };
+    #};
+  };
 
   programs.bash = bashsettings;
   programs.neovim = vimsettings pkgs;
@@ -25,6 +109,7 @@ in
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
+      ms-python.python
     ];
   };
 
@@ -67,11 +152,18 @@ in
     enable = true;
     windowManager.i3 = rec {
       enable = true;
+      package = pkgs.i3-gaps;
       config = {
         modifier = "Mod4";
-        bars = [
-          { statusCommand = "${pkgs.i3status}/bin/i3status"; }
-        ];
+        bars = [ ]; # use polybar instead
+
+        gaps = {
+          inner = 12;
+          outer = 5;
+          smartGaps = true;
+          smartBorders = "off";
+        };
+
         startup = [
           { command = "exec firefox"; }
           { command = "exec steam"; }
@@ -85,9 +177,13 @@ in
           "${mod}+w" = "exec firefox";
           "${mod}+s" = "exec steam";
           "${mod}+m" = "exec spotify";
-          "${mod}+Return" = "exec terminology";
+          "${mod}+Return" = "exec alacritty";
           "${mod}+c" = "kill";
           "${mod}+Shift+h" = "exec dm-tool switch-to-greeter";
+          "${mod}+Shift+m" = "exec amixer -q sset Master toggle";
+          "XF86AudioRaiseVolume" = "exec amixer -q sset Master 10%+";
+          "XF86AudioLowerVolume" = "exec amixer -q sset Master 10%-";
+          "XF86AudioMute" = "exec amixer -q sset Master toggle";
 
           "${mod}+Shift+grave" = "move scratchpad";
           "${mod}+grave" = "scratchpad show";
@@ -139,7 +235,9 @@ in
         };
       };
       extraConfig = ''
-        # for_window [class="^.*"] border none
+        for_window [class="^.*"] border pixel 2
+        #exec systemctl --user import-environment
+        exec systemctl --user restart graphical-session.target
       '';
     };
   };
