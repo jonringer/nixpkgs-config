@@ -54,6 +54,10 @@
       fileline=$(rg -n ''${1:-.} | fzf | awk '{print $1}' | sed 's/.$//')
       vim ''${fileline%%:*} +''${fileline##*:}
     }
+
+    nbfkg() {
+      nix build -f . --keep-going $@
+    }
   '';
 }
 
