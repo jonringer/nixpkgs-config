@@ -20,6 +20,7 @@
 
     suspend="systemctl suspend";
   };
+
   initExtra = ''
     set -o vi  # enable vi-like control
     export EDITOR=vim
@@ -57,6 +58,18 @@
 
     nbfkg() {
       nix build -f . --keep-going $@
+    }
+
+    n() {
+      cd ~/projects/nixpkgs
+    }
+
+    h() {
+      cd ~
+    }
+
+    a() {
+      cd ~/projects/AzureMlCli
     }
   '';
 }
