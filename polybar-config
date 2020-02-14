@@ -44,6 +44,8 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
+monitor = ${env:MONITOR}
+
 ;---------------------------------------
 ;		FONTS
 ;---------------------------------------
@@ -132,6 +134,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000

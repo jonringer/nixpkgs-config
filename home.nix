@@ -20,8 +20,14 @@ in
     enable = true;
     package = pkgs.polybarFull;
     config = ./polybar-config;
-    script = ''polybar nord &'';
+    script = ''
+      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+        MONITOR=$m polybar nord &
+      done
+    '';
   };
+
+  services.lorri.enable = true;
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
