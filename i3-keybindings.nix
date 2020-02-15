@@ -7,6 +7,7 @@ mod:
   "${mod}+c" = "kill";
   "${mod}+Shift+h" = "exec dm-tool switch-to-greeter";
   "${mod}+Shift+m" = "exec amixer -q sset Master toggle";
+  "${mod}+Alt+s" = "exec kill $(pgrep -f shutter); shutter -s";
   "XF86AudioRaiseVolume" = "exec amixer -q sset Master 10%+";
   "XF86AudioLowerVolume" = "exec amixer -q sset Master 10%-";
   "XF86AudioMute" = "exec amixer -q sset Master toggle";

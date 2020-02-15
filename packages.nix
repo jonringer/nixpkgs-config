@@ -29,6 +29,7 @@ pkgs: with pkgs; [
   pavucontrol  # pulseaudio configuration
   python36
   rustc
+  shutter # screenshots
   spotify
   stack
   steam
