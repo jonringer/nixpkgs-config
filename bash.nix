@@ -71,6 +71,13 @@
     a() {
       cd ~/projects/AzureMlCli
     }
+
+    lo() {
+      lorri shell
+    }
+
+    ns() {
+      nix-shell
   '';
 }
 
