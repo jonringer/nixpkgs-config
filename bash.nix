@@ -79,6 +79,10 @@
     ns() {
       nix-shell
     }
+
+    nrp() {
+      nix-review pr $@
+    }
   '';
 }
 
