@@ -43,7 +43,7 @@ in
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
-      ms-python.python
+      #ms-python.python
     ];
   };
 
@@ -77,6 +77,13 @@ in
       rv = "remote -v";
       rs = "remote show";
       st = "status";
+    };
+    extraConfig = {
+      merge = {
+        tool = "vim -d";
+        conflictstyle = "diff3";
+      };
+      mergetool.prompt = "false";
     };
   };
 
