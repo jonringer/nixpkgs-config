@@ -45,5 +45,12 @@ pkgs: with pkgs; [
 
   #haskell dependencies
   haskellPackages.hlint
+
+  # dotnet
+  (with dotnetCorePackages; combinePackages [
+    sdk_2_1
+    sdk_3_0
+    sdk_3_1
+  ])
 ]
 
