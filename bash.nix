@@ -17,6 +17,7 @@
     g="git";
     gco="git checkout";
     gst="git status";
+    vimdiff="nvim -d";
 
     suspend="systemctl suspend";
   };
