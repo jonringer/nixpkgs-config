@@ -31,7 +31,7 @@ pkgs: with pkgs; [
   rustc
   shutter # screenshots
   spotify
-  stack
+  # stack broken
   steam
 
   tree
