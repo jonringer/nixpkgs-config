@@ -1,0 +1,28 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -p gitAndTools.hub -p jq -p xsel -i bash
+# After manually reviewing a PR on the UI, use this script to run nixpkgs-review
+# and merge it if the package and all reverse dependencies pass.
+set -euo pipefail
+PR=$1
+cd ~/projects/nixpkgs
+
+echo "********************************************************************************"
+hub pr show --format '%t' $PR
+
+echo "********************************************************************************"
+# TODO: add nixpkgs-review to shell once there's a release upstream with --no-shell
+# In the meantime, this is a nix-build off of upstream master branch.
+/nix/store/19dlv0r6kw76064wlbd7nhi8gm35gxzm-nixpkgs-review/bin/nixpkgs-review pr --no-shell $PR
+
+echo "********************************************************************************"
+TOKEN=$(awk '/oauth/ {print $NF}' ~/.config/hub)
+CACHE=$(find ${XDG_CACHE_HOME:-${HOME}/.cache}/nixpkgs-review/ -type d -name pr-$PR* | head -1)
+escaped_msg=$(sed -e 's|"|\\"|g' -e 's|`||g' -e 's|\n|\\n|g' $CACHE/report.md)
+msg="LGTM\\n\\n${escaped_msg}"
+echo "{\"event\": \"APPROVE\", \"body\": \"$msg\"}" > $CACHE/review.json
+
+curl -sH "Authorization: token $TOKEN" -H "Content-Type: text/json; charset=utf-8" \
+     -XPOST https://api.github.com/repos/NixOS/nixpkgs/pulls/$PR/reviews \
+     --data @$CACHE/review.json
+
+curl -sH "Authorization: token $TOKEN" -XPUT https://api.github.com/repos/NixOS/nixpkgs/pulls/$1/merge --data '{ "merge_method": "rebase"}'
