@@ -33,7 +33,7 @@
 
     export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$ "
 
-    export PATH=$PATH:~/.cargo/bin
+    export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
 
     editline() { vim ''${1%%:*} +''${1##*:}; }
     cd() { builtin cd "$@" && ls . ; }
@@ -83,6 +83,11 @@
 
     nrp() {
       nix-review pr $@
+    }
+
+    push_bot() {
+      local branch=$(git rev-parse --abbrev-ref HEAD)
+      git push git@github.com:r-ryantm/nixpkgs.git ''${branch}:''${branch} $@
     }
   '';
 }
