@@ -17,6 +17,7 @@ pkgs: with pkgs; [
   gnupg                         # gpg command
   gnumake
   htop
+  gitAndTools.hub
   jetbrains.pycharm-community
   jetbrains.rider
   ghc
