@@ -10,10 +10,15 @@ in
   programs.home-manager.enable = true;
   home.packages = packages pkgs;
 
-  services.compton = {
+  services.picom = {
     enable = true;
     inactiveOpacity = "0.8";
     inactiveDim = "0.15";
+    fadeExclude = [
+      "window_type *= 'menu'"
+      "name ~= 'Firefox\$'"
+      "focused = 1"
+    ];
   };
 
   services.polybar = {
@@ -80,7 +85,7 @@ in
     };
     extraConfig = {
       merge = {
-        tool = "vim -d";
+        tool = "vimdiff";
         conflictstyle = "diff3";
       };
       mergetool.prompt = "false";
