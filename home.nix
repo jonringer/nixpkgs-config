@@ -41,7 +41,23 @@ in
   programs.direnv.enable = true;
   programs.htop.enable = true;
   programs.jq.enable = true;
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host build
+        HostName 10.0.0.21
+        Port 22
+        User root
+        IdentitiesOnly yes
+        IdentityFile /home/jon/.ssh/id_rsa
+
+      Host server
+        HostName 10.0.0.21
+        Port 22
+        User jon
+        IdentitiesOnly yes
+        IdentityFile /home/jon/.ssh/id_rsa'';
+  };
   programs.fzf.enable = true;
 
   programs.vscode = {

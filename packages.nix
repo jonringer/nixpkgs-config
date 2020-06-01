@@ -10,17 +10,19 @@ pkgs: with pkgs; [
   discord
   dwarf-fortress-packages.dwarf-fortress-full
   enlightenment.terminology
+  exa
   fd
   firefox
-  exa
   git
+  gitAndTools.hub
+  ghc
   gnupg                         # gpg command
   gnumake
+  hicolor-icon-theme # lutris
   htop
-  gitAndTools.hub
   jetbrains.pycharm-community
   jetbrains.rider
-  ghc
+  lutris
 
   mono
   nerdfonts
@@ -29,6 +31,7 @@ pkgs: with pkgs; [
   openal
   pavucontrol  # pulseaudio configuration
   python36
+  ranger
   rustc
   shutter # screenshots
   spotify
