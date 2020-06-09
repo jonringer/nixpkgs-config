@@ -70,6 +70,7 @@ in
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Jonathan Ringer";
     userEmail = "jonringer117@gmail.com";
     aliases = {
