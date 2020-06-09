@@ -35,6 +35,15 @@
 
     export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
 
+    if [ -n "$VIRTUAL_ENV" ]; then
+      env=$(basename "$VIRTUAL_ENV")
+      export PS1="($env) $PS1"
+    fi
+
+    if [ -n "$IN_NIX_SHELL" ]; then
+      export PS1="(nix-shell) $PS1"
+    fi
+
     editline() { vim ''${1%%:*} +''${1##*:}; }
     cd() { builtin cd "$@" && ls . ; }
     # Change dir with Fuzzy finding
