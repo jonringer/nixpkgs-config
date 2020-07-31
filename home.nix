@@ -105,6 +105,9 @@ in
         tool = "vimdiff";
         conflictstyle = "diff3";
       };
+      pull = {
+        rebase=true;
+      };
       mergetool.prompt = "false";
     };
   };
