@@ -21,6 +21,9 @@ pkgs:
     wombat256
 
     # language packages
+    # Elixir
+    vim-elixir
+
     # Haskell
     vim-hoogle
     neco-ghc
