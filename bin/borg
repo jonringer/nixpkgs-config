@@ -12,7 +12,7 @@ hub pr show --format '%t' $PR
 echo "********************************************************************************"
 # TODO: add nixpkgs-review to shell once there's a release upstream with --no-shell
 # In the meantime, this is a nix-build off of upstream master branch.
-/nix/store/19dlv0r6kw76064wlbd7nhi8gm35gxzm-nixpkgs-review/bin/nixpkgs-review pr --no-shell $PR
+nixpkgs-review pr --no-shell $PR
 
 echo "********************************************************************************"
 TOKEN=$(awk '/oauth/ {print $NF}' ~/.config/hub)

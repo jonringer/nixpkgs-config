@@ -26,8 +26,8 @@ pkgs: with pkgs; [
 
   mono
   nerdfonts
-  nix-review
   nix-update
+  nixpkgs-review
   ntfs3g
   openal
   pavucontrol  # pulseaudio configuration
