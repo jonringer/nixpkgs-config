@@ -16,6 +16,7 @@ pkgs: with pkgs; [
   git
   gitAndTools.hub
   ghc
+  glances
   gnupg                         # gpg command
   gnumake
   hicolor-icon-theme # lutris
