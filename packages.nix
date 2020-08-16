@@ -44,6 +44,7 @@ pkgs: with pkgs; [
   usbutils
   vlc
   wget
+  ytop
 
   # vim plugin dependencies
   fzf
