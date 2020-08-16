@@ -40,6 +40,7 @@ pkgs: with pkgs; [
   # stack broken
   steam
 
+  teams
   tree
   usbutils
   vlc

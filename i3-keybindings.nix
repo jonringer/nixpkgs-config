@@ -2,6 +2,7 @@ mod:
 {
   "${mod}+w" = "exec firefox";
   "${mod}+s" = "exec steam";
+  "${mod}+t" = "exec teams";
   "${mod}+m" = "exec spotify";
   "${mod}+Return" = "exec alacritty";
   "${mod}+c" = "kill";
