@@ -39,7 +39,12 @@ in
   programs.neovim = vimsettings pkgs;
 
   programs.direnv.enable = true;
-  programs.htop.enable = true;
+  programs.htop = {
+    enable = true;
+    meters.left = [ "LeftCPUs2" "Memory" "Swap" ];
+    meters.right = [ "RightCPUs2" "Tasks" "LoadAverage" "Uptime" ];
+    treeView = true;
+  };
   programs.jq.enable = true;
   programs.ssh = {
     enable = true;
