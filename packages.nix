@@ -29,11 +29,14 @@ pkgs: with pkgs; [
   nerdfonts
   nix-update
   nixpkgs-review
+  nodejs # needed for coc vim plugins
   ntfs3g
   openal
   pavucontrol  # pulseaudio configuration
+  perl # for fzf history
   python36
   ranger
+  rnix-lsp
   rustc
   shutter # screenshots
   spotify

@@ -1,4 +1,4 @@
-{
+pkgs: {
   enable = true;
   shellAliases = {
     sudo="sudo ";   # will now check for alias expansion after sudo
@@ -34,6 +34,9 @@
     export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$ "
 
     export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
+
+    # for coc-rust-analyzer
+    export RUST_SRC_PATH=${pkgs.rustPlatform.rustcSrc}
 
     if [ -n "$VIRTUAL_ENV" ]; then
       env=$(basename "$VIRTUAL_ENV")

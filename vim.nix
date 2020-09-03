@@ -4,6 +4,7 @@ pkgs:
   viAlias = true;
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
+    coc-nvim
     fzf-vim
     fzfWrapper
     LanguageClient-neovim
@@ -42,6 +43,9 @@ pkgs:
 
     # Python
     semshi
+
+    # rust
+    coc-rust-analyzer
   ];
 
   extraConfig = ''
