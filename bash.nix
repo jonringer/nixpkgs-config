@@ -47,6 +47,12 @@ pkgs: {
       export PS1="(nix-shell) $PS1"
     fi
 
+    if [ ! -z "$WSL_DISTRO_NAME" -a -d ~/.nix-profile/etc/profile.d ]; then
+      for f in ~/.nix-profile/etc/profile.d/* ; do
+        source $f
+      done
+    fi
+
     editline() { vim ''${1%%:*} +''${1##*:}; }
     cd() { builtin cd "$@" && ls . ; }
     # Change dir with Fuzzy finding
