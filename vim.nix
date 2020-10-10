@@ -25,6 +25,9 @@ pkgs:
     # Elixir
     vim-elixir
 
+    # Elm
+    elm-vim
+
     # Haskell
     vim-hoogle
     neco-ghc
