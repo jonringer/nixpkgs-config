@@ -88,6 +88,7 @@ in
       cl = "clone";
       cm = "commit -m";
       co = "checkout";
+      cp = "cherry-pick";
       d = "diff";
       f = "fetch";
       fo = "fetch origin";
