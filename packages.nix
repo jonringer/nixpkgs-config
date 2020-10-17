@@ -1,15 +1,13 @@
-pkgs: with pkgs; [
+pkgs: withGUI: with pkgs; [
+  # these files are meant to be installed in all scenarios
   binutils
   bottom
   cabal-install
   cargo
-  chromium
   cmake
 
   dbus
   direnv
-  discord
-  dwarf-fortress-packages.dwarf-fortress-full
   enlightenment.terminology
   exa
   fd
@@ -22,9 +20,6 @@ pkgs: with pkgs; [
   gnumake
   hicolor-icon-theme # lutris
   htop
-  jetbrains.pycharm-community
-  jetbrains.rider
-  lutris
 
   mono
   nerdfonts
@@ -33,21 +28,15 @@ pkgs: with pkgs; [
   nodejs # needed for coc vim plugins
   ntfs3g
   openal
-  pavucontrol  # pulseaudio configuration
   perl # for fzf history
   python36
   ranger
   rnix-lsp
   rustc
-  shutter # screenshots
-  spotify
   # stack broken
-  steam
 
-  teams
   tree
   usbutils
-  vlc
   wget
 
   # vim plugin dependencies
@@ -63,5 +52,19 @@ pkgs: with pkgs; [
     sdk_3_0
     sdk_3_1
   ])
+] ++ pkgs.lib.optionals withGUI [
+  # intended to be installed with an X11 or wayland session
+  chromium
+  discord
+  dwarf-fortress-packages.dwarf-fortress-full
+  jetbrains.pycharm-community
+  jetbrains.rider
+  pavucontrol  # pulseaudio configuration
+  lutris
+  shutter # screenshots
+  spotify
+  steam
+  teams
+  vlc
 ]
 

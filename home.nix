@@ -4,15 +4,17 @@ let
   bashsettings = import ./bash.nix pkgs;
   vimsettings = import ./vim.nix;
   packages = import ./packages.nix;
+  withGUI = import ./withGUI;
+  inherit (lib) mkIf;
 in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = packages pkgs;
+  home.packages = packages pkgs withGUI;
 
   home.file.".config/nvim/coc-settings.json".source = ./coc-settings.json;
 
-  services.picom = {
+  services.picom = mkIf withGUI {
     enable = true;
     #inactiveOpacity = "0.8";
     inactiveDim = "0.15";
@@ -23,7 +25,7 @@ in
     ];
   };
 
-  services.polybar = {
+  services.polybar = mkIf withGUI {
     enable = true;
     package = pkgs.polybarFull;
     config = ./polybar-config;
@@ -122,7 +124,7 @@ in
 
   xdg.enable = true;
 
-  xsession = {
+  xsession = mkIf withGUI {
     enable = true;
     windowManager.i3 = rec {
       enable = true;
