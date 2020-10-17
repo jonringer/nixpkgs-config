@@ -1,5 +1,6 @@
 pkgs: with pkgs; [
   binutils
+  bottom
   cabal-install
   cargo
   chromium
@@ -48,7 +49,6 @@ pkgs: with pkgs; [
   usbutils
   vlc
   wget
-  ytop
 
   # vim plugin dependencies
   fzf
