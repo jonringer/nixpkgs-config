@@ -4,6 +4,7 @@ pkgs: withGUI: with pkgs; [
   bottom
   cabal-install
   cargo
+  chromium
   cmake
 
   dbus
