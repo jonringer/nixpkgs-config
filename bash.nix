@@ -108,6 +108,18 @@ pkgs: {
       nix-review pr $@
     }
 
+    if command -v vim > /dev/null; then
+      vim() {
+        nvim $@
+      }
+    fi
+
+    if command -v vi > /dev/null; then
+      vim() {
+        nvim $@
+      }
+    fi
+
     push_bot() {
       local branch=$(git rev-parse --abbrev-ref HEAD)
       git push git@github.com:r-ryantm/nixpkgs.git ''${branch}:''${branch} $@
