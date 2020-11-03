@@ -108,13 +108,13 @@ pkgs: {
       nix-review pr $@
     }
 
-    if command -v vim > /dev/null; then
+    if ! command -v vim > /dev/null; then
       vim() {
         nvim $@
       }
     fi
 
-    if command -v vi > /dev/null; then
+    if ! command -v vi > /dev/null; then
       vim() {
         nvim $@
       }
