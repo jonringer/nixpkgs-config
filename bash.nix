@@ -38,6 +38,11 @@ pkgs: {
     # for coc-rust-analyzer
     export RUST_SRC_PATH=${pkgs.rustPlatform.rustcSrc}
 
+    if [ -e "$HOME"/.config/git_token ]; then
+        GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
+        GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
+    fi
+
     if [ -n "$VIRTUAL_ENV" ]; then
       env=$(basename "$VIRTUAL_ENV")
       export PS1="($env) $PS1"
