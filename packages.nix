@@ -4,7 +4,6 @@ pkgs: withGUI: with pkgs; [
   bottom
   cabal-install
   cargo
-  chromium
   cmake
 
   dbus
@@ -30,7 +29,7 @@ pkgs: withGUI: with pkgs; [
   ntfs3g
   openal
   perl # for fzf history
-  python36
+  python3
   ranger
   rnix-lsp
   rustc
@@ -58,6 +57,7 @@ pkgs: withGUI: with pkgs; [
   chromium
   discord
   dwarf-fortress-packages.dwarf-fortress-full
+  hexchat
   jetbrains.pycharm-community
   jetbrains.rider
   pavucontrol  # pulseaudio configuration
