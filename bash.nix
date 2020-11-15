@@ -18,13 +18,15 @@ pkgs: {
     gco="git checkout";
     gst="git status";
     vimdiff="nvim -d";
+    vim="nvim";
+    vi="nvim";
 
     suspend="systemctl suspend";
   };
 
   initExtra = ''
     set -o vi  # enable vi-like control
-    export EDITOR=vim
+    export EDITOR=nvim
 
     RED="\033[0;31m"
     GREEN="\033[0;32m"
@@ -58,7 +60,7 @@ pkgs: {
       done
     fi
 
-    editline() { vim ''${1%%:*} +''${1##*:}; }
+    editline() { nvim ''${1%%:*} +''${1##*:}; }
     cd() { builtin cd "$@" && ls . ; }
     # Change dir with Fuzzy finding
     cf() {
@@ -72,12 +74,12 @@ pkgs: {
     }
     # search Files and Edit
     fe() {
-      rg --files ''${1:-.} | fzf --preview 'cat {}' | xargs vim
+      rg --files ''${1:-.} | fzf --preview 'cat {}' | xargs $EDITOR
     }
     # Search content and Edit
     se() {
       fileline=$(rg -n ''${1:-.} | fzf | awk '{print $1}' | sed 's/.$//')
-      vim ''${fileline%%:*} +''${fileline##*:}
+      $EDITOR ''${fileline%%:*} +''${fileline##*:}
     }
 
     nbfkg() {
@@ -107,18 +109,6 @@ pkgs: {
     nrp() {
       nix-review pr $@
     }
-
-    if ! command -v vim > /dev/null; then
-      vim() {
-        nvim $@
-      }
-    fi
-
-    if ! command -v vi > /dev/null; then
-      vim() {
-        nvim $@
-      }
-    fi
 
     push_bot() {
       local branch=$(git rev-parse --abbrev-ref HEAD)
