@@ -28,6 +28,10 @@ pkgs: {
     set -o vi  # enable vi-like control
     export EDITOR=nvim
 
+    # not sure why this stopped working, but it's annoying
+    git_prompt_path=${pkgs.git}/share/bash-completion/completions/git-prompt.sh
+    [ -f "$git_prompt_path" ] && source "$git_prompt_path"
+
     RED="\033[0;31m"
     GREEN="\033[0;32m"
     NO_COLOR="\033[m"
