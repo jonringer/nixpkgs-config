@@ -7,7 +7,7 @@ mkdir -p ~/.config/
 git clone git@github.com:jonringer/nixpkgs-config.git ~/.config/nixpkgs
 ```
 
-if running this on a remote machine, change the value of the `withUI` file
+if running this on a remote machine, change the value of the `withGUI` file
 ```bash
 $ echo "false" > withUI
 ```
