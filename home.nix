@@ -16,13 +16,14 @@ in
 
   services.picom = mkIf withGUI {
     enable = true;
-    #inactiveOpacity = "0.8";
+    inactiveOpacity = "0.8";
     inactiveDim = "0.15";
     fadeExclude = [
       "window_type *= 'menu'"
       "name ~= 'Firefox\$'"
       "focused = 1"
     ];
+    vSync = true; # workaround with nvidia drivers
   };
 
   services.polybar = mkIf withGUI {
@@ -37,6 +38,8 @@ in
   };
 
   services.lorri.enable = true;
+  services.pulseeffects.enable = withGUI;
+  services.pulseeffects.preset = "vocal_clarity";
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
@@ -71,10 +74,11 @@ in
 
   programs.vscode = {
     enable = true;
-    #extensions = with pkgs.vscode-extensions; [
-    #  vscodevim.vim
-      #ms-python.python
-    #];
+    package = pkgs.vscode;
+    extensions = with pkgs.vscode-extensions; [
+      ms-vscode.cpptools
+      vscodevim.vim
+    ];
   };
 
   programs.git = {
@@ -82,6 +86,10 @@ in
     lfs.enable = true;
     userName = "Jonathan Ringer";
     userEmail = "jonringer117@gmail.com";
+    signing = {
+      key = "5C841D3CFDFEC4E0";
+      signByDefault = true;
+    };
     aliases = {
       a = "add";
       c = "commit";
@@ -120,6 +128,19 @@ in
       };
       mergetool.prompt = "false";
     };
+    includes = [
+      # use different signing key
+      {
+        condition = "gitdir:~/work/";
+        contents = {
+          user = {
+            name = "Jonathan Ringer";
+            email = "jonathan.ringer@iohk.io";
+            signingKey = "523B37EC8FB6E3A2";
+          };
+        };
+      }
+    ];
   };
 
   xdg.enable = true;
