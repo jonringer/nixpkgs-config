@@ -34,6 +34,8 @@ mod:
   "${mod}+h" = "split h";
   "${mod}+v" = "split v";
   "${mod}+f" = "fullscreen";
+  "${mod}+Shift+b" = "layout splith";
+  "${mod}+Shift+v" = "layout splitv";
   "${mod}+Shift+s" = "layout stacking";
   "${mod}+Shift+t" = "layout tabbed";
   "${mod}+Shift+f" = "floating toggle";
