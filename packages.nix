@@ -1,5 +1,6 @@
 pkgs: withGUI: with pkgs; [
   # these files are meant to be installed in all scenarios
+  bat
   binutils
   bottom
   cabal-install
@@ -21,8 +22,10 @@ pkgs: withGUI: with pkgs; [
   hicolor-icon-theme # lutris
   htop
 
+  manix
   mono
   nerdfonts
+  nix-index
   nix-update
   nixpkgs-review
   nodejs # needed for coc vim plugins
