@@ -20,6 +20,8 @@ pkgs: {
     vimdiff="nvim -d";
     vim="nvim";
     vi="nvim";
+    opt=''manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --ansi --preview="manix '{}' | sed 's/type: /> type: /g' | bat -l Markdown --color=always --plain"'';
+    to32="nix-hash --to-base32 --type sha256";
 
     suspend="systemctl suspend";
   };
@@ -90,16 +92,24 @@ pkgs: {
       nix build -f . --keep-going $@
     }
 
+    c() {
+      cd ~/.config/nixpkgs/
+    }
+
     n() {
       cd ~/projects/nixpkgs
     }
 
-    h() {
-      cd ~
+    w() {
+      cd ~/work
     }
 
-    a() {
-      cd ~/projects/AzureMlCli
+    m() {
+      cd ~/work/mantis-ops/
+    }
+
+    h() {
+      cd ~
     }
 
     lo() {
