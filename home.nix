@@ -171,10 +171,14 @@ in
         startup = [
           { command = "exec firefox"; }
           { command = "exec steam"; }
+          { command = "exec Discord"; }
+          { command = "exec hexchat"; }
         ];
         assigns = {
           "2: web" = [{ class = "^Firefox$"; }];
           "4" = [{ class = "^Steam$"; }];
+          "6" = [{ class = "^hexchat$"; }];
+          "7" = [{ class = "^Discord$"; }];
         };
 
         keybindings = import ./i3-keybindings.nix config.modifier;
