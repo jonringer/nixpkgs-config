@@ -40,6 +40,9 @@ in
   services.lorri.enable = true;
   services.pulseeffects.enable = withGUI;
   services.pulseeffects.preset = "vocal_clarity";
+  services.gpg-agent.enable = true;
+  services.gpg-agent.enableSshSupport = true;
+  services.gpg-agent.pinentryFlavor = "tty";
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
@@ -68,7 +71,11 @@ in
         Port 22
         User jon
         IdentitiesOnly yes
-        IdentityFile /home/jon/.ssh/id_rsa'';
+        IdentityFile /home/jon/.ssh/id_rsa
+
+      Host *
+        GSSAPIAuthentication no
+      '';
   };
   programs.fzf.enable = true;
 
