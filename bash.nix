@@ -108,6 +108,10 @@ pkgs: {
       cd ~/work/mantis-ops/
     }
 
+    b() {
+      cd ~/work/bitte/
+    }
+
     h() {
       cd ~
     }

@@ -42,6 +42,10 @@ pkgs: withGUI: with pkgs; [
   usbutils
   wget
 
+  # for work
+  vault
+  consul
+
   # vim plugin dependencies
   fzf
   ripgrep
