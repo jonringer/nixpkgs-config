@@ -51,6 +51,11 @@ pkgs: {
         GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
     fi
 
+    fetch_hashi_creds() {
+      export NOMAD_TOKEN="$(vault read -field secret_id nomad/creds/developer)"
+      export CONSUL_HTTP_TOKEN="$(vault read -field token consul/creds/developer)"
+    }
+
     if [ -n "$VIRTUAL_ENV" ]; then
       env=$(basename "$VIRTUAL_ENV")
       export PS1="($env) $PS1"
