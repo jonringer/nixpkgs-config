@@ -79,13 +79,12 @@ in
   };
   programs.fzf.enable = true;
 
-  programs.vscode = {
+  programs.vscode = mkIf withGUI {
     enable = true;
-    package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions; [
-      ms-vscode.cpptools
-      vscodevim.vim
-    ];
+    #extensions = with pkgs.vscode-extensions; [
+    #  vscodevim.vim
+    #  ms-python.python
+    #];
   };
 
   programs.git = {

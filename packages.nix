@@ -2,7 +2,7 @@ pkgs: withGUI: with pkgs; [
   # these files are meant to be installed in all scenarios
   bat
   binutils
-  bottom
+  #bottom
   cabal-install
   cargo
   cmake
@@ -12,7 +12,6 @@ pkgs: withGUI: with pkgs; [
   enlightenment.terminology
   exa
   fd
-  firefox
   git
   gitAndTools.hub
   ghc
@@ -24,7 +23,6 @@ pkgs: withGUI: with pkgs; [
 
   manix
   mono
-  nerdfonts
   nix-index
   nix-update
   nixpkgs-review
@@ -62,6 +60,7 @@ pkgs: withGUI: with pkgs; [
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
   chromium
+  firefox
   discord
   dwarf-fortress-packages.dwarf-fortress-full
   hexchat
@@ -69,6 +68,7 @@ pkgs: withGUI: with pkgs; [
   jetbrains.rider
   pavucontrol  # pulseaudio configuration
   lutris
+  nerdfonts
   shutter # screenshots
   spotify
   steam
