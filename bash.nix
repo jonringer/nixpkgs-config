@@ -16,7 +16,6 @@ pkgs: {
     ".6"="cd ../../../../../..";
     g="git";
     gco="git checkout";
-    gd="git diff --name-only --diff-filter=d | xargs bat --diff";
     gst="git status";
     vimdiff="nvim -d";
     vim="nvim";
@@ -157,6 +156,10 @@ pkgs: {
         nvim $@
       }
     fi
+
+    gd() {
+      git diff --name-only --diff-filter=d $@ | xargs bat --diff
+    }
 
     push_bot() {
       local branch=$(git rev-parse --abbrev-ref HEAD)
