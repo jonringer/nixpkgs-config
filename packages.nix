@@ -23,6 +23,7 @@ pkgs: withGUI: with pkgs; [
 
   manix
   mono
+  niv
   nix-index
   nix-update
   nixpkgs-review
@@ -65,6 +66,7 @@ pkgs: withGUI: with pkgs; [
   dwarf-fortress-packages.dwarf-fortress-full
   hexchat
   jetbrains.pycharm-community
+  nerdfonts
   jetbrains.rider
   pavucontrol  # pulseaudio configuration
   lutris
