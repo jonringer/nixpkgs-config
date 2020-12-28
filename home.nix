@@ -73,6 +73,13 @@ in
         IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
 
+      Host pi
+        HostName 10.0.0.220
+        Port 22
+        User jon
+        IdentitiesOnly yes
+        IdentityFile /home/jon/.ssh/id_rsa
+
       Host *
         GSSAPIAuthentication no
       '';
