@@ -4,7 +4,7 @@ let
   bashsettings = import ./bash.nix pkgs;
   vimsettings = import ./vim.nix;
   packages = import ./packages.nix;
-  withGUI = import ./withGUI;
+  withGUI = (builtins.pathExists ./withGUI && import ./withGUI);
   inherit (lib) mkIf;
 in
 {

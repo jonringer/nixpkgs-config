@@ -39,6 +39,11 @@ pkgs: {
     NO_COLOR="\033[m"
     BLUE="\033[0;34m"
 
+    git_prompt_path=${pkgs.git}/share/bash-completion/completions/git-prompt.sh
+    if [ -f "$git_prompt_path" ] && ! command -v __git_ps1 > /dev/null; then
+      source "$git_prompt_path"
+    fi
+
     export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$ "
 
     export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
@@ -132,6 +137,18 @@ pkgs: {
     nrp() {
       nix-review pr $@
     }
+
+    if ! command -v vim > /dev/null; then
+      vim() {
+        nvim $@
+      }
+    fi
+
+    if ! command -v vi > /dev/null; then
+      vim() {
+        nvim $@
+      }
+    fi
 
     push_bot() {
       local branch=$(git rev-parse --abbrev-ref HEAD)
