@@ -16,6 +16,7 @@ pkgs: {
     ".6"="cd ../../../../../..";
     g="git";
     gco="git checkout";
+    gd="git diff --name-only --diff-filter=d | xargs bat --diff";
     gst="git status";
     vimdiff="nvim -d";
     vim="nvim";
@@ -47,6 +48,9 @@ pkgs: {
     export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$ "
 
     export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
+
+    # bat utilities
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
     # for coc-rust-analyzer
     export RUST_SRC_PATH=${pkgs.rustPlatform.rustcSrc}
@@ -90,7 +94,7 @@ pkgs: {
     }
     # search Files and Edit
     fe() {
-      rg --files ''${1:-.} | fzf --preview 'cat {}' | xargs $EDITOR
+      rg --files ''${1:-.} | fzf --preview 'bat -f {}' | xargs $EDITOR
     }
     # Search content and Edit
     se() {
@@ -100,6 +104,10 @@ pkgs: {
 
     nbfkg() {
       nix build -f . --keep-going $@
+    }
+
+    battail() {
+      tail -f $@ | bat --paging=never -l log
     }
 
     c() {
