@@ -55,8 +55,8 @@ pkgs: {
     export RUST_SRC_PATH=${pkgs.rustPlatform.rustcSrc}
 
     if [ -e "$HOME"/.config/git_token ]; then
-        GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
-        GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
+        export GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
+        export GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
     fi
 
     fetch_hashi_creds() {
