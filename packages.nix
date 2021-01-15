@@ -76,5 +76,7 @@ pkgs: withGUI: with pkgs; [
   steam
   teams
   vlc
+
+  tmate
 ]
 
