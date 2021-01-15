@@ -44,7 +44,8 @@ pkgs: {
       source "$git_prompt_path"
     fi
 
-    export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$ "
+    prompt_symbol=$(test "$UID" == "0" && echo "$RED#$NO_COLOR" || echo "$")
+    export PS1="$RED[\t] $GREEN\u@\h $NO_COLOR\w$BLUE\`__git_ps1\`$NO_COLOR\n$prompt_symbol "
 
     export PATH=$PATH:~/.cargo/bin:~/.config/nixpkgs/bin
 
