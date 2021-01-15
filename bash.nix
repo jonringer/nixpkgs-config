@@ -51,9 +51,6 @@ pkgs: {
     # bat utilities
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-    # for coc-rust-analyzer
-    export RUST_SRC_PATH=${pkgs.rustPlatform.rustcSrc}
-
     if [ -e "$HOME"/.config/git_token ]; then
         export GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
         export GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)

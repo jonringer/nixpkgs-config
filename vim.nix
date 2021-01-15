@@ -4,7 +4,7 @@ pkgs:
   viAlias = true;
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
-    coc-nvim
+    #coc-nvim
     fzf-vim
     fzfWrapper
     LanguageClient-neovim
@@ -49,10 +49,17 @@ pkgs:
 
     # rust
     coc-rust-analyzer
+    YouCompleteMe
+  ];
+
+  extraPackages = with pkgs; [
+    rust-analyzer
   ];
 
   extraConfig = ''
     colorscheme wombat256mod
+    syntax on
+    filetype plugin indent on
 
     set number
     set expandtab
@@ -97,6 +104,20 @@ pkgs:
     nnoremap <leader>L :BLines<CR>
     nnoremap <leader>c :Commits<CR>
     nnoremap <leader>C :BCommits<CR>
+
+    let g:ycm_language_server =
+    \ [
+    \   {
+    \     'name': 'rust',
+    \     'cmdline': ['rust-analyzer'],
+    \     'filetypes': ['rust'],
+    \     'project_root_files': ['Cargo.toml']
+    \   }
+    \ ]
+
+    let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rust-analyzer'],
+    \ }
   '';
 }
 
