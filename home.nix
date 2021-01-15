@@ -4,7 +4,11 @@ let
   bashsettings = import ./bash.nix pkgs;
   vimsettings = import ./vim.nix;
   packages = import ./packages.nix;
+
+  # hacky way of determining which machine I'm running this from
   withGUI = (builtins.pathExists ./withGUI && import ./withGUI);
+  isDesktop = (builtins.pathExists ./isDesktop && import ./isDesktop);
+
   inherit (lib) mkIf;
 in
 {
@@ -179,11 +183,16 @@ in
           { command = "exec steam"; }
           { command = "exec Discord"; }
           { command = "exec hexchat"; }
+        ] ++ lib.optionals isDesktop [
+          { command = "xrand --output HDMI-0 --right-of DP-4"; notification = false; }
+        ] ++ [
+          # allow polybar to resize itself
+          { command = "systemctl --user restart polybar"; always = true; notification = false; }
         ];
         assigns = {
           "2: web" = [{ class = "^Firefox$"; }];
           "4" = [{ class = "^Steam$"; }];
-          "6" = [{ class = "^hexchat$"; }];
+          "6" = [{ class = "HexChat$"; }];
           "7" = [{ class = "^Discord$"; }];
         };
 
@@ -192,7 +201,9 @@ in
       extraConfig = ''
         for_window [class="^.*"] border pixel 2
         #exec systemctl --user import-environment
-        exec systemctl --user restart graphical-session.target
+      '' + lib.optionalString isDesktop ''
+        workspace "2: web" output HDMI-0
+        workspace "7" output HDMI-0
       '';
     };
   };
