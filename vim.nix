@@ -50,6 +50,7 @@ pkgs:
     # rust
     coc-rust-analyzer
     YouCompleteMe
+    vim-toml
   ];
 
   extraPackages = with pkgs; [
@@ -118,6 +119,11 @@ pkgs:
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
     \ }
+
+    "CTRL-t to toggle tree view with CTRL-t
+    nmap <silent> <C-t> :NERDTreeToggle<CR>
+    "Set F2 to put the cursor to the nerdtree
+    nmap <silent> <F2> :NERDTreeFind<CR>
   '';
 }
 
