@@ -105,7 +105,8 @@ in
     userEmail = "jonringer117@gmail.com";
     signing = {
       key = "5C841D3CFDFEC4E0";
-      signByDefault = true;
+      # TODO: figure out why gpg is a colossal PITA to use
+      signByDefault = isDesktop;
     };
     aliases = {
       a = "add";
