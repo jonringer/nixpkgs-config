@@ -42,10 +42,12 @@ in
   };
 
   services.lorri.enable = true;
-  services.gpg-agent.enable = true;
+  services.pulseeffects.enable = withGUI;
+  services.pulseeffects.preset = "vocal_clarity";
+  services.gpg-agent.enable = isDesktop;
   services.gpg-agent.enableSshSupport = true;
-  services.gpg-agent.enableExtraSocket = true;
   services.gpg-agent.pinentryFlavor = "tty";
+  services.gpg-agent.enableExtraSocket = isDesktop;
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
