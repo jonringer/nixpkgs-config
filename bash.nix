@@ -107,6 +107,11 @@ pkgs: {
       tail -f $@ | bat --paging=never -l log
     }
 
+    # a doesn't really make sense, just the second letter
+    a() {
+      cd ~/projects/basinix
+    }
+
     c() {
       cd ~/.config/nixpkgs/
     }
@@ -129,6 +134,10 @@ pkgs: {
 
     h() {
       cd ~
+    }
+
+    p() {
+      cd ~/projects
     }
 
     lo() {
