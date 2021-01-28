@@ -46,6 +46,7 @@ in
   services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = true;
   services.gpg-agent.enableSshSupport = true;
+  services.gpg-agent.enableExtraSocket = true;
   services.gpg-agent.pinentryFlavor = "tty";
 
   programs.alacritty = import ./alacritty.nix;
@@ -57,6 +58,7 @@ in
     enable = true;
     meters.left = [ "LeftCPUs2" "Memory" "Swap" ];
     meters.right = [ "RightCPUs2" "Tasks" "LoadAverage" "Uptime" ];
+    showProgramPath = false;
     treeView = true;
   };
   programs.jq.enable = true;
@@ -74,6 +76,7 @@ in
         HostName 10.0.0.21
         Port 22
         User jon
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent ~/.gnupg/S.gpg-agent.extra
         IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
 
