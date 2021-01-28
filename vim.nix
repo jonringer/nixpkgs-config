@@ -28,6 +28,9 @@ pkgs:
     # Elm
     elm-vim
 
+    # HCL
+    vim-hcl
+
     # Haskell
     vim-hoogle
     neco-ghc
@@ -61,7 +64,10 @@ pkgs:
     colorscheme wombat256mod
     syntax on
     filetype plugin indent on
+    set splitbelow
 
+    set shiftwidth=2
+    set tabstop=2
     set number
     set expandtab
     set foldmethod=indent
@@ -106,6 +112,7 @@ pkgs:
     nnoremap <leader>c :Commits<CR>
     nnoremap <leader>C :BCommits<CR>
 
+    let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_language_server =
     \ [
     \   {
