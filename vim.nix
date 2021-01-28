@@ -54,6 +54,9 @@ pkgs:
     coc-rust-analyzer
     YouCompleteMe
     vim-toml
+
+    # sql
+    sql-nvim
   ];
 
   extraPackages = with pkgs; [
