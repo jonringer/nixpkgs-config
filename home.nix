@@ -42,8 +42,6 @@ in
   };
 
   services.lorri.enable = true;
-  services.pulseeffects.enable = withGUI;
-  services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = true;
   services.gpg-agent.enableSshSupport = true;
   services.gpg-agent.enableExtraSocket = true;
@@ -120,6 +118,7 @@ in
       cm = "commit -m";
       co = "checkout";
       cp = "cherry-pick";
+      cpx = "cherry-pick -x";
       d = "diff";
       f = "fetch";
       fo = "fetch origin";
