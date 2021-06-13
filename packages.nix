@@ -37,6 +37,7 @@ pkgs: withGUI: with pkgs; [
   rustc
   # stack broken
 
+  tig
   tree
   usbutils
   wget
@@ -63,7 +64,7 @@ pkgs: withGUI: with pkgs; [
   chromium
   firefox
   discord
-  dwarf-fortress-packages.dwarf-fortress-full
+  # dwarf-fortress-packages.dwarf-fortress-full
   hexchat
   jetbrains.pycharm-community
   nerdfonts
