@@ -25,6 +25,9 @@ pkgs:
     # Elixir
     vim-elixir
 
+    # Cue
+    vim-cue
+
     # Elm
     elm-vim
 
@@ -37,6 +40,9 @@ pkgs:
     haskell-vim
     hlint-refactor-vim
     ghc-mod-vim
+
+    # Hocon
+    vim-hocon
 
     # Nix
     vim-nix
