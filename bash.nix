@@ -99,6 +99,11 @@ pkgs: {
       $EDITOR ''${fileline%%:*} +''${fileline##*:}
     }
 
+    # Search git log, preview shows subject, body, and diff
+    fl() {
+      git log --oneline --color=always | fzf --ansi --preview="echo {} | cut -d ' ' -f 1 | xargs -I @ sh -c 'git log --pretty=medium -n 1 @; git diff @^ @' | bat --color=always" | cut -d ' ' -f 1 | xargs git log --pretty=short -n 1
+    }
+
     nbfkg() {
       nix build -f . --keep-going $@
     }
