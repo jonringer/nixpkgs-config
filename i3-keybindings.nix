@@ -5,6 +5,7 @@ mod:
   "${mod}+t" = "exec teams";
   "${mod}+m" = "exec spotify";
   "${mod}+Return" = "exec alacritty";
+  "${mod}+Shift+Return" = "exec xterm";
   "${mod}+c" = "kill";
   "${mod}+Shift+h" = "exec dm-tool switch-to-greeter";
   "${mod}+Shift+m" = "exec amixer -q sset Master toggle";
