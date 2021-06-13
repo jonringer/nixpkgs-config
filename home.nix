@@ -93,6 +93,7 @@ in
 
   programs.vscode = mkIf withGUI {
     enable = true;
+    package = pkgs.vscode-fhsWithPackages (pkgs: with pkgs; [ zlib rustup ]);
     #extensions = with pkgs.vscode-extensions; [
     #  vscodevim.vim
     #  ms-python.python
