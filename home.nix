@@ -186,7 +186,6 @@ in
           { command = "exec firefox"; }
           { command = "exec steam"; }
           { command = "exec Discord"; }
-          { command = "exec hexchat"; }
         ] ++ lib.optionals isDesktop [
           { command = "xrand --output HDMI-0 --right-of DP-4"; notification = false; }
         ] ++ [

@@ -64,8 +64,12 @@ pkgs: withGUI: with pkgs; [
   chromium
   firefox
   discord
-  # dwarf-fortress-packages.dwarf-fortress-full
-  hexchat
+  (dwarf-fortress-packages.dwarf-fortress-full.override {
+    dfVersion = "0.47.04";
+    theme = dwarf-fortress-packages.themes.phoebus;
+    enableIntro = false;
+    enableFPS = true;
+  })
   jetbrains.pycharm-community
   nerdfonts
   jetbrains.rider
