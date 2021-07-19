@@ -12,11 +12,11 @@ hub pr show --format '%t' $PR
 echo "********************************************************************************"
 # TODO: add nixpkgs-review to shell once there's a release upstream with --no-shell
 # In the meantime, this is a nix-build off of upstream master branch.
-nixpkgs-review pr --no-shell $PR
+nixpkgs-review pr --no-shell $PR $@
 
 echo "********************************************************************************"
 TOKEN=$(awk '/oauth/ {print $NF}' ~/.config/hub)
-CACHE=$(find ${XDG_CACHE_HOME:-${HOME}/.cache}/nixpkgs-review/ -type d -name pr-$PR* | head -1)
+CACHE=$(find ${XDG_CACHE_HOME:-${HOME}/.cache}/nixpkgs-review/pr-$PR* -type f -name report.md | head -1 | xargs dirname)
 escaped_msg=$(sed -e 's|"|\\"|g' -e 's|`||g' -e 's|\n|\\n|g' $CACHE/report.md)
 msg="LGTM\\n\\n${escaped_msg}"
 echo "{\"event\": \"APPROVE\", \"body\": \"$msg\"}" > $CACHE/review.json
