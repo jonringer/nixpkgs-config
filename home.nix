@@ -8,6 +8,7 @@ let
   # hacky way of determining which machine I'm running this from
   withGUI = (builtins.pathExists ./withGUI && import ./withGUI);
   isDesktop = (builtins.pathExists ./isDesktop && import ./isDesktop);
+  networkInterface = if builtins.pathExists ./interface then import ./interface else "enp5s0";
 
   inherit (lib) mkIf;
 in
@@ -33,7 +34,10 @@ in
   services.polybar = mkIf withGUI {
     enable = true;
     package = pkgs.polybarFull;
-    config = ./polybar-config;
+    config = pkgs.substituteAll {
+      src = ./polybar-config;
+      interface = networkInterface;
+    };
     script = ''
       for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
         MONITOR=$m polybar nord &
@@ -42,7 +46,7 @@ in
   };
 
   services.lorri.enable = true;
-  services.pulseeffects.enable = withGUI;
+  services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = isDesktop;
   services.gpg-agent.enableSshSupport = true;
@@ -69,6 +73,14 @@ in
         HostName 10.0.0.21
         Port 22
         User root
+        IdentitiesOnly yes
+        IdentityFile /home/jon/.ssh/id_rsa
+
+      Host external
+        HostName 73.157.50.82
+        Port 2222
+        User jon
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent ~/.gnupg/S.gpg-agent.extra
         IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
 

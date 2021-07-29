@@ -2,3 +2,4 @@
 withGUI
 overlays/factorio.nix
 isDesktop
+interface

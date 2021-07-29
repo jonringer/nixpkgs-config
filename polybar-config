@@ -64,7 +64,7 @@ modules-center = xwindow
 ;---------------------------------------
 [module/lan]
 type = internal/network
-interface = enp5s0
+interface = @interface@
 accumulate-stats = true
 format-connected = <ramp-signal> <label-connected>
 label-connected =   %downspeed% %local_ip%
