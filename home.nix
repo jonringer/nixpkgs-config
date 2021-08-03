@@ -48,8 +48,8 @@ in
   services.lorri.enable = true;
   services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
-  services.gpg-agent.enable = isDesktop;
-  services.gpg-agent.enableSshSupport = true;
+  services.gpg-agent.enable = true;
+  services.gpg-agent.enableExtraSocket = true;
   services.gpg-agent.pinentryFlavor = "tty";
   services.gpg-agent.enableExtraSocket = isDesktop;
 
@@ -68,7 +68,9 @@ in
   programs.jq.enable = true;
   programs.ssh = {
     enable = true;
+    forwardAgent = true;
     extraConfig = ''
+
       Host build
         HostName 10.0.0.21
         Port 22
@@ -88,7 +90,6 @@ in
         HostName 10.0.0.21
         Port 22
         User jon
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent ~/.gnupg/S.gpg-agent.extra
         IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
 
@@ -101,6 +102,7 @@ in
 
       Host *
         GSSAPIAuthentication no
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
       '';
   };
   programs.fzf.enable = true;
@@ -121,8 +123,7 @@ in
     userEmail = "jonringer117@gmail.com";
     signing = {
       key = "5C841D3CFDFEC4E0";
-      # TODO: figure out why gpg is a colossal PITA to use
-      signByDefault = isDesktop;
+      signByDefault = true;
     };
     aliases = {
       a = "add";

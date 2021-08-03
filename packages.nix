@@ -25,6 +25,7 @@ pkgs: withGUI: with pkgs; [
   mono
   niv
   nix-index
+  nix-template
   nix-update
   nixpkgs-review
   nodejs # needed for coc vim plugins
