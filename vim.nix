@@ -5,6 +5,7 @@ pkgs:
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
     #coc-nvim
+    editorconfig-vim
     fzf-vim
     fzfWrapper
     LanguageClient-neovim
