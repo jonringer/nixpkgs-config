@@ -105,6 +105,8 @@ pkgs:
     let g:haskellmode_completion_ghc = 0
     autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     autocmd FileType markdown setlocal conceallevel=0
+    autocmd FileType cue setlocal shiftwidth=2 tabstop=2 expandtab
+    autocmd FileType cue DisableStripWhitespaceOnSave
 
     " Tabular bindings
     let g:haskell_tabular = 1
@@ -122,6 +124,7 @@ pkgs:
     nnoremap <leader>c :Commits<CR>
     nnoremap <leader>C :BCommits<CR>
 
+    let g:cue_fmt_on_save = 0
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_language_server =
     \ [
