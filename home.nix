@@ -49,9 +49,8 @@ in
   services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = true;
-  services.gpg-agent.enableExtraSocket = true;
+  services.gpg-agent.enableExtraSocket = withGUI;
   services.gpg-agent.pinentryFlavor = "tty";
-  services.gpg-agent.enableExtraSocket = isDesktop;
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
