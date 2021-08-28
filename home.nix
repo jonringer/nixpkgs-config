@@ -59,10 +59,12 @@ in
   programs.direnv.enable = true;
   programs.htop = {
     enable = true;
-    meters.left = [ "LeftCPUs2" "Memory" "Swap" ];
-    meters.right = [ "RightCPUs2" "Tasks" "LoadAverage" "Uptime" ];
-    showProgramPath = false;
-    treeView = true;
+    settings = {
+      left_meters = [ "LeftCPUs2" "Memory" "Swap" ];
+      left_right = [ "RightCPUs2" "Tasks" "LoadAverage" "Uptime" ];
+      setshowProgramPath = false;
+      treeView = true;
+    };
   };
   programs.jq.enable = true;
   programs.ssh = {
