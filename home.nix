@@ -50,7 +50,7 @@ in
   services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = true;
   services.gpg-agent.enableExtraSocket = withGUI;
-  services.gpg-agent.pinentryFlavor = "tty";
+  services.gpg-agent.enableSshSupport = true;
 
   programs.alacritty = import ./alacritty.nix;
   programs.bash = bashsettings;
@@ -83,7 +83,8 @@ in
         HostName 73.157.50.82
         Port 2222
         User jon
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent ~/.gnupg/S.gpg-agent.extra
+        ForwardAgent yes
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
         IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
 

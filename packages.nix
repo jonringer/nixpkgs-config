@@ -62,7 +62,6 @@ pkgs: withGUI: with pkgs; [
   ])
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
-  chromium
   firefox
   discord
   (dwarf-fortress-packages.dwarf-fortress-full.override {
@@ -77,7 +76,7 @@ pkgs: withGUI: with pkgs; [
   pavucontrol  # pulseaudio configuration
   lutris
   nerdfonts
-  shutter # screenshots
+  #shutter # screenshots
   spotify
   steam
   teams
