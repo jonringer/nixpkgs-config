@@ -178,6 +178,14 @@ in
           };
         };
       }
+      # prevent background gc thread from constantly blocking reviews
+      {
+        condition = "gitdir:~/projects/nixpkgs";
+        contents = {
+          gc.auto = 0;
+        };
+      }
+
     ];
   };
 
