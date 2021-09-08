@@ -33,6 +33,8 @@ pkgs: {
     # not sure why this stopped working, but it's annoying
     git_prompt_path=${pkgs.git}/share/bash-completion/completions/git-prompt.sh
     [ -f "$git_prompt_path" ] && source "$git_prompt_path"
+    git_compl_path=${pkgs.git}/share/bash-completion/completions/git
+    [ -f "$git_compl_path" ] && source "$git_compl_path"
 
     RED="\033[0;31m"
     GREEN="\033[0;32m"
