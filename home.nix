@@ -71,38 +71,36 @@ in
     enable = true;
     forwardAgent = true;
     extraConfig = ''
+      Include ~/.ssh/config.d/*
 
       Host build
         HostName 10.0.0.21
         Port 22
-        User root
-        IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
+        User root
 
       Host external
         HostName 73.157.50.82
         Port 2222
-        User jon
-        ForwardAgent yes
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
-        IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
+        User jon
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
 
       Host server
         HostName 10.0.0.21
         Port 22
-        User jon
-        IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
+        User jon
 
       Host pi
         HostName 10.0.0.220
         Port 22
-        User jon
-        IdentitiesOnly yes
         IdentityFile /home/jon/.ssh/id_rsa
+        User jon
 
       Host *
+        ForwardAgent yes
+        IdentitiesOnly yes
         GSSAPIAuthentication no
         RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
       '';

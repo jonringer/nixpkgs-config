@@ -63,7 +63,7 @@ pkgs:
     vim-toml
 
     # sql
-    sql-nvim
+    sqlite-lua
   ];
 
   extraPackages = with pkgs; [
