@@ -88,6 +88,7 @@ in
         HostName 73.157.50.82
         Port 2222
         IdentityFile /home/jon/.ssh/id_rsa
+        ForwardAgent yes
         User jon
         RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
 

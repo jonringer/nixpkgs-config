@@ -28,6 +28,8 @@
     homeConfigurations.jon = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         configuration = import ./home.nix;
+        extraSpecialArgs.withGUI = true;
+        extraSpecialArgs.isDesktop = true;
         homeDirectory = "/home/jon";
         username = "jon";
         extraSpecialArgs = {
