@@ -100,7 +100,6 @@ in
 
       Host *
         ForwardAgent yes
-        IdentitiesOnly yes
         GSSAPIAuthentication no
         RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
       '';
