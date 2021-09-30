@@ -78,7 +78,6 @@ pkgs: withGUI: with pkgs; [
   nerdfonts
   #shutter # screenshots
   spotify
-  steam
   teams
   vlc
 
