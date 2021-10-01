@@ -17,6 +17,8 @@ pkgs: {
     g="git";
     gco="git checkout";
     gst="git status";
+    nfl="nix flake lock";
+    nflu="nix flake lock --update-input";
     vimdiff="nvim -d";
     vim="nvim";
     vi="nvim";
