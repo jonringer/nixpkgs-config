@@ -28,6 +28,11 @@
         configuration = import ./home.nix;
         homeDirectory = "/home/jon";
         username = "jon";
+        extraSpecialArgs = {
+          withGUI = true;
+          isDesktop = true;
+          networkInterface = "enp5s0";
+        };
       };
     inherit home-manager;
   };

@@ -7,9 +7,12 @@ mkdir -p ~/.config/
 git clone git@github.com:jonringer/nixpkgs-config.git ~/.config/nixpkgs
 ```
 
-if running this on a remote machine, change the value of the `withGUI` file
+if running this on a remote machine, change the value of the `withGUI` specialArg
 ```bash
-$ echo "false" > withGUI
+...
+extraSpecialArgs = {
+  withGUI = false;
+};
 ```
 
 To apply changes:

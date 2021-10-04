@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, specialArgs, ... }:
 
 let
   bashsettings = import ./bash.nix pkgs;
@@ -6,13 +6,13 @@ let
   packages = import ./packages.nix;
 
   # hacky way of determining which machine I'm running this from
-  withGUI = (builtins.pathExists ./withGUI && import ./withGUI);
-  isDesktop = (builtins.pathExists ./isDesktop && import ./isDesktop);
-  networkInterface = if builtins.pathExists ./interface then import ./interface else "enp5s0";
+  inherit (specialArgs) withGUI isDesktop networkInterface;
 
   inherit (lib) mkIf;
 in
 {
+  nixpkgs.config.allowUnfree = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = packages pkgs withGUI;
