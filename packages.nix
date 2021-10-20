@@ -3,6 +3,7 @@ pkgs: withGUI: with pkgs; [
   bat
   binutils
   bottom
+  brightnessctl
   cabal-install
   cargo
   cmake
