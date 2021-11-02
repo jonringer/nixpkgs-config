@@ -48,27 +48,10 @@
         "type": "github"
       }
     },
-    "polybar-scripts": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1619661966,
-        "narHash": "sha256-plrrZaTgD/N3r7q9cTV136m0ADuW0iDmNd+iA8t/9uA=",
-        "owner": "victortrac",
-        "repo": "polybar-scripts",
-        "rev": "f7b34597314aced8392a109ee261c388a0e2dfdb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "victortrac",
-        "repo": "polybar-scripts",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "polybar-scripts": "polybar-scripts",
         "utils": "utils"
       }
     },

@@ -5,20 +5,12 @@
     utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
-
-    polybar-scripts = {
-      # needed for pipewire integration, follow upstream after
-      # https://github.com/polybar/polybar-scripts/pull/320 gets merged
-      url = "github:victortrac/polybar-scripts";
-      flake = false;
-    };
   };
 
-  outputs = { self, home-manager, polybar-scripts, nixpkgs, utils }:
+  outputs = { self, home-manager, nixpkgs, utils }:
     let
       localOverlay = _: final: {
-        inherit polybar-scripts;
-        polybar-pipewire = final.callPackage ./nix/polybar-pipewire.nix { };
+        polybar-pipewire = final.callPackage ./nix/polybar.nix { };
       };
 
       pkgsForSystem = system: import nixpkgs {

@@ -33,7 +33,7 @@ in
   };
 
   home.file.".config/polybar/pipewire.sh" = {
-    source = "${pkgs.polybar-pipewire}/bin/pipewire.sh";
+    source = pkgs.polybar-pipewire;
     executable = true;
   };
   services.polybar = mkIf withGUI {
