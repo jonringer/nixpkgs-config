@@ -14,6 +14,7 @@ pkgs: {
     ".4"="cd ../../../..";
     ".5"="cd ../../../../..";
     ".6"="cd ../../../../../..";
+    bro="bitte rebuild --only";
     g="git";
     gco="git checkout";
     gst="git status";
