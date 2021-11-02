@@ -6,12 +6,13 @@ let
   packages = import ./packages.nix;
 
   # hacky way of determining which machine I'm running this from
-  inherit (specialArgs) withGUI isDesktop networkInterface;
+  inherit (specialArgs) withGUI isDesktop networkInterface localOverlay;
 
   inherit (lib) mkIf;
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ localOverlay ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -31,6 +32,10 @@ in
     vSync = true; # workaround with nvidia drivers
   };
 
+  home.file.".config/polybar/pipewire.sh" = {
+    source = "${pkgs.polybar-pipewire}/bin/pipewire.sh";
+    executable = true;
+  };
   services.polybar = mkIf withGUI {
     enable = true;
     package = pkgs.polybarFull;

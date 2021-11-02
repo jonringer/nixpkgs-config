@@ -56,7 +56,7 @@ font-0 = TerminessTTF Nerd Font:weight=bold:size=10;2
 ;	     MODULES LAYOUT
 ;---------------------------------------
 modules-left = i3
-modules-right = lan cpu memory pulseaudio storage battery date
+modules-right = lan cpu memory pipewire storage battery date
 modules-center = xwindow
 
 ;---------------------------------------
@@ -225,11 +225,16 @@ format-underline = ${colors.black}
 ;---------------------------------------
 ;	   VOLUME
 ;---------------------------------------
-[module/pulseaudio]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_00_1b.0.analog-stereo
-use-ui-max = true
-interval = 5
+[module/pipewire]
+type = custom/script
+label = "%output%"
+label-font = 2
+interval = 2.0
+exec = ~/.config/polybar/pipewire.sh
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/pipewire.sh mute &
+scroll-up = ~/.config/polybar/pipewire.sh up &
+scroll-down = ~/.config/polybar/pipewire.sh down &
 format-volume = <ramp-volume><label-volume>
 format-volume-foreground = ${colors.black}
 format-volume-background = ${colors.yellow}
