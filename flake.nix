@@ -37,6 +37,19 @@
           inherit localOverlay;
         };
       };
+    homeConfigurations.server = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        configuration = import ./home.nix;
+        homeDirectory = "/home/jon";
+        username = "jon";
+        extraSpecialArgs = {
+          withGUI = false;
+          isDesktop = false;
+          networkInterface = "enp68s0";
+          inherit localOverlay;
+        };
+      };
+
     inherit home-manager;
   };
 }
