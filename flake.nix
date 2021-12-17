@@ -19,38 +19,46 @@
         ];
         inherit system;
       };
+
+      mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration ({
+        system = "x86_64-linux";
+        configuration = import ./home.nix;
+        homeDirectory = "/home/jon";
+        username = "jon";
+      } // args);
+
     in utils.lib.eachSystem [ "x86_64-linux" ] (system: rec {
       legacyPackages = pkgsForSystem system;
   }) // {
     # non-system suffixed items should go here
     overlay = localOverlay;
     nixosModules.home = import ./home.nix; # attr set or list
-    homeConfigurations.jon = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        configuration = import ./home.nix;
-        extraSpecialArgs.withGUI = true;
-        extraSpecialArgs.isDesktop = true;
-        homeDirectory = "/home/jon";
-        username = "jon";
-        extraSpecialArgs = {
-          withGUI = true;
-          isDesktop = true;
-          networkInterface = "enp5s0";
-          inherit localOverlay;
-        };
+
+    homeConfigurations.jon = mkHomeConfiguration {
+      extraSpecialArgs = {
+        withGUI = true;
+        isDesktop = true;
+        networkInterface = "enp5s0";
+        inherit localOverlay;
       };
-    homeConfigurations.server = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        configuration = import ./home.nix;
-        homeDirectory = "/home/jon";
-        username = "jon";
-        extraSpecialArgs = {
-          withGUI = false;
-          isDesktop = false;
-          networkInterface = "enp68s0";
-          inherit localOverlay;
-        };
+    };
+
+    homeConfigurations.server = mkHomeConfiguration {
+      extraSpecialArgs = {
+        withGUI = false;
+        isDesktop = false;
+        networkInterface = "enp68s0";
+        inherit localOverlay;
       };
+    };
+
+    homeConfigurations.laptop = mkHomeConfiguration {
+      extraSpecialArgs = {
+        withGUI = true;
+        isDesktop = true;
+        networkInterface = "wlp1s0";
+      };
+    };
 
     inherit home-manager;
   };
