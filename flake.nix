@@ -57,6 +57,7 @@
         withGUI = true;
         isDesktop = true;
         networkInterface = "wlp1s0";
+        inherit localOverlay;
       };
     };
 
