@@ -77,6 +77,7 @@ pkgs: withGUI: with pkgs; [
   pavucontrol  # pulseaudio configuration
   lutris
   nerdfonts
+  obs-studio
   #shutter # screenshots
   spotify
   teams
