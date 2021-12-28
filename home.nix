@@ -171,16 +171,16 @@ in
     };
     includes = [
       # use different signing key
-      {
-        condition = "gitdir:~/work/";
-        contents = {
-          user = {
-            name = "Jonathan Ringer";
-            email = "jonathan.ringer@iohk.io";
-            signingKey = "523B37EC8FB6E3A2";
-          };
-        };
-      }
+      #{
+      #  condition = "gitdir:~/work/";
+      #  contents = {
+      #    user = {
+      #      name = "Jonathan Ringer";
+      #      email = "jonathan.ringer@iohk.io";
+      #      signingKey = "523B37EC8FB6E3A2";
+      #    };
+      #  };
+      #}
       # prevent background gc thread from constantly blocking reviews
       {
         condition = "gitdir:~/projects/nixpkgs";
