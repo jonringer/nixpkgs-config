@@ -159,7 +159,7 @@ pkgs: {
     }
 
     nrp() {
-      nix-review pr $@
+      nix-review pr --skip-package home-assistant $@
     }
 
     if ! command -v vim > /dev/null; then
