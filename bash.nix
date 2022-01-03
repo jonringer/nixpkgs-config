@@ -182,6 +182,42 @@ pkgs: {
       local branch=$(git rev-parse --abbrev-ref HEAD)
       git push git@github.com:r-ryantm/nixpkgs.git ''${branch}:''${branch} $@
     }
+
+    update_nixpkgs_homepage() {
+      if [ "$#" -lt 3 ]; then
+        echo "Please provide: [installable] [old-homepage] [new-homepage]"
+        return 1
+      fi
+
+      local installable=$1
+      local old_homepage=$2
+      local new_homepage=$3
+      local branch_name="update-''${installable}-homepage"
+
+      pushd "''${NIXPKGS_ROOT:-/home/jon/projects/nixpkgs}"
+
+      rg -l "$old_homepage" | xargs sed -i -e "s|$old_homepage|$new_homepage|g"
+
+      if [[ $(git diff --stat) == "" ]]; then
+        echo "No changes were made"
+        return 1
+      fi
+
+      git checkout master
+      git checkout -b ''${branch_name}
+      git add pkgs/
+      git diff HEAD
+      git commit -v -m "''${installable}: update homepage"
+
+      git push jonringer ''${branch_name}
+
+      git checkout master
+      popd
+    }
+
+    unh() {
+      update_nixpkgs_homepage $@
+    }
   '';
 }
 
