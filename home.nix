@@ -78,6 +78,14 @@ in
     extraConfig = ''
       Include ~/.ssh/config.d/*
 
+      Host mac
+        10.0.0.236
+        Port 22
+        IdentityFile /home/jon/.ssh/id_rsa
+        ForwardAgent yes
+        User jon
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
+
       Host build
         HostName 10.0.0.21
         Port 22
