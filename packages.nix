@@ -42,6 +42,7 @@ pkgs: withGUI: with pkgs; [
   tig
   tree
   usbutils
+  watson
   wget
 
   # for work
@@ -57,10 +58,12 @@ pkgs: withGUI: with pkgs; [
 
   # dotnet
   (with dotnetCorePackages; combinePackages [
-    sdk_2_1
-    sdk_3_0
     sdk_3_1
+    sdk_5_0
   ])
+
+  # so neovim can copy to clipboard
+  xclip
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
   firefox
