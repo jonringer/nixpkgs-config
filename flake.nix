@@ -3,7 +3,7 @@
 
   inputs = {
     utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
   };
 
@@ -20,11 +20,12 @@
         inherit system;
       };
 
-      mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration ({
+      mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration (rec {
         system = "x86_64-linux";
         configuration = import ./home.nix;
         homeDirectory = "/home/jon";
         username = "jon";
+        pkgs = pkgsForSystem system;
       } // args);
 
     in utils.lib.eachSystem [ "x86_64-linux" ] (system: rec {
