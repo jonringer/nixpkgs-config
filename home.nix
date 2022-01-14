@@ -79,7 +79,7 @@ in
       Include ~/.ssh/config.d/*
 
       Host mac
-        10.0.0.236
+        HostName 10.0.0.236
         Port 22
         IdentityFile /home/jon/.ssh/id_rsa
         ForwardAgent yes
