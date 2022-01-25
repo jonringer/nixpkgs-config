@@ -9,6 +9,7 @@ let
   inherit (specialArgs) withGUI isDesktop networkInterface localOverlay;
 
   inherit (lib) mkIf;
+  inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -32,7 +33,7 @@ in
     vSync = true; # workaround with nvidia drivers
   };
 
-  home.file.".config/polybar/pipewire.sh" = {
+  home.file.".config/polybar/pipewire.sh" = mkIf withGUI {
     source = pkgs.polybar-pipewire;
     executable = true;
   };
@@ -50,14 +51,14 @@ in
     '';
   };
 
-  services.lorri.enable = true;
+  services.lorri.enable = isLinux;
   services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
-  services.gpg-agent.enable = true;
+  services.gpg-agent.enable = isLinux;
   services.gpg-agent.enableExtraSocket = withGUI;
-  services.gpg-agent.enableSshSupport = true;
+  services.gpg-agent.enableSshSupport = isLinux;
 
-  programs.alacritty = import ./alacritty.nix;
+  programs.alacritty = (import ./alacritty.nix) withGUI;
   programs.bash = bashsettings;
   programs.neovim = vimsettings pkgs;
 

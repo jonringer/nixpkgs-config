@@ -57,6 +57,11 @@ pkgs: {
     # bat utilities
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      # on mac, give support to wombat256 colors
+      export TERM=xterm-256color
+    fi
+
     if [ -e "$HOME"/.config/git_token ]; then
         export GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
         export GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)

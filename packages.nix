@@ -3,14 +3,12 @@ pkgs: withGUI: with pkgs; [
   bat
   binutils
   bottom
-  brightnessctl
   cabal-install
   cargo
   cmake
 
   dbus
   direnv
-  enlightenment.terminology
   exa
   fd
   git
@@ -23,14 +21,11 @@ pkgs: withGUI: with pkgs; [
   htop
 
   manix
-  mono
-  niv
   nix-index
   nix-template
   nix-update
   nixpkgs-review
   nodejs # needed for coc vim plugins
-  ntfs3g
   openal
   perl # for fzf history
   python3
@@ -41,13 +36,8 @@ pkgs: withGUI: with pkgs; [
 
   tig
   tree
-  usbutils
   watson
   wget
-
-  # for work
-  vault
-  consul
 
   # vim plugin dependencies
   fzf
@@ -56,16 +46,28 @@ pkgs: withGUI: with pkgs; [
   #haskell dependencies
   haskellPackages.hlint
 
+  # so neovim can copy to clipboard
+  xclip
+] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
   # dotnet
   (with dotnetCorePackages; combinePackages [
     sdk_3_1
     sdk_5_0
   ])
 
-  # so neovim can copy to clipboard
-  xclip
+  mono
+  niv
+  ntfs3g
+  usbutils
+
+  # for work
+  vault
+  consul
+
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
+  brightnessctl
+  enlightenment.terminology
   firefox
   discord
   (dwarf-fortress-packages.dwarf-fortress-full.override {
@@ -75,7 +77,6 @@ pkgs: withGUI: with pkgs; [
     enableFPS = true;
   })
   jetbrains.pycharm-community
-  nerdfonts
   jetbrains.rider
   pavucontrol  # pulseaudio configuration
   lutris

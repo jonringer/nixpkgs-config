@@ -21,7 +21,7 @@
       };
 
       mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration (rec {
-        system = "x86_64-linux";
+        system = args.system or "x86_64-linux";
         configuration = import ./home.nix;
         homeDirectory = "/home/jon";
         username = "jon";
@@ -58,6 +58,16 @@
         withGUI = true;
         isDesktop = true;
         networkInterface = "wlp1s0";
+        inherit localOverlay;
+      };
+    };
+
+    homeConfigurations.mac-mini = mkHomeConfiguration {
+      system = "aarch64-darwin";
+      extraSpecialArgs = {
+        withGUI = false;
+        isDesktop = false;
+        networkInterface = "en1";
         inherit localOverlay;
       };
     };

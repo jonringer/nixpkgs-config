@@ -1,5 +1,6 @@
+withGUI:
 {
-  enable = true;
+  enable = withGUI;
   settings = {
     keybindings = [
       { key = "Equals";     mods = "Control";     action = "IncreaseFontSize"; }
