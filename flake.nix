@@ -10,8 +10,16 @@
 
   outputs = { self, home-manager, nixpkgs, utils }:
     let
-      localOverlay = _: final: {
+      localOverlay = prev: final: {
         polybar-pipewire = final.callPackage ./nix/polybar.nix { };
+        nixpkgs-review-fixed = prev.nixpkgs-review.overrideAttrs (oldAttrs: {
+          src = prev.fetchFromGitHub {
+            owner = "Mic92";
+            repo = "nixpkgs-review";
+            rev = "refs/pull/254/head";
+            sha256 = "sha256-I5VRLB9IUWYMh+QvT8qkzJG7PvhaQsTnNcF7oEZA3dg=";
+          };
+        });
       };
 
       pkgsForSystem = system: import nixpkgs {

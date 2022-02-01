@@ -24,7 +24,7 @@ pkgs: withGUI: with pkgs; [
   nix-index
   nix-template
   nix-update
-  nixpkgs-review
+  nixpkgs-review-fixed
   nodejs # needed for coc vim plugins
   openal
   perl # for fzf history
