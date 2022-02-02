@@ -108,6 +108,9 @@ pkgs:
     autocmd FileType cue setlocal shiftwidth=2 tabstop=2 expandtab
     autocmd FileType cue DisableStripWhitespaceOnSave
 
+    " Format elm files after saving
+    autocmd BufWritePost *.elm silent !elm-format --yes <afile>
+
     " Tabular bindings
     let g:haskell_tabular = 1
     vmap <leader>a= :Tabularize /=<CR>

@@ -42,6 +42,7 @@ pkgs: withGUI: with pkgs; [
   # vim plugin dependencies
   fzf
   ripgrep
+  elmPackages.elm-format
 
   #haskell dependencies
   haskellPackages.hlint
