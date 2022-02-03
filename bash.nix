@@ -164,7 +164,7 @@ pkgs: {
     }
 
     nrp() {
-      nix-review pr --skip-package home-assistant --disable-aliases $@
+      nix-review pr $@
     }
 
     if ! command -v vim > /dev/null; then
