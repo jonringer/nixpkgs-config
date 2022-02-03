@@ -16,8 +16,8 @@
           src = prev.fetchFromGitHub {
             owner = "Mic92";
             repo = "nixpkgs-review";
-            rev = "refs/pull/254/head";
-            sha256 = "sha256-I5VRLB9IUWYMh+QvT8qkzJG7PvhaQsTnNcF7oEZA3dg=";
+            rev = "5fbbb0dbaeda257427659f9168daa39c2f5e9b75";
+            sha256 = "sha256-jj12GlDN/hYdwDqeOqwX97lOlvNCmCWaQjRB3+4+w7M=";
           };
         });
       };
