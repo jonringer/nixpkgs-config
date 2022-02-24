@@ -77,8 +77,6 @@ pkgs: withGUI: with pkgs; [
     enableIntro = false;
     enableFPS = true;
   })
-  jetbrains.pycharm-community
-  jetbrains.rider
   pavucontrol  # pulseaudio configuration
   lutris
   nerdfonts
