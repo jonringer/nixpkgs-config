@@ -85,6 +85,7 @@ in
         IdentityFile /home/jon/.ssh/id_rsa
         ForwardAgent yes
         User jon
+        ServerAliveInterval 60
         RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
 
       Host build
