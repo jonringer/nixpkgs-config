@@ -170,6 +170,7 @@ in
       st = "status";
     };
     extraConfig = {
+      fetch.prune = false;
       merge = {
         tool = "vimdiff";
         conflictstyle = "diff3";
