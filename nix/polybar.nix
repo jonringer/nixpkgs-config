@@ -1,32 +1,25 @@
-{ lib, coreutils, gnused, pulseaudio, pipewire, writeShellScript }:
+{ lib, coreutils, gnused, pulseaudio, pamixer, pipewire, writeShellScript }:
 
 # Largely influenced from https://github.com/victortrac/polybar-scripts/blob/master/polybar-scripts/pipewire/pipewire.sh
 
 writeShellScript "pipewire.sh" ''
 
-PATH=${lib.makeBinPath [ coreutils gnused pulseaudio pipewire ]}
+PATH=${lib.makeBinPath [ coreutils gnused pamixer pulseaudio pipewire ]}
 
 function main() {
-    DEFAULT_SOURCE=$(pw-record --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: description="\(.*\)" prio=[[:digit:]]\+$/\1/p' | cut -f 1 -d ' ')
-    DEFAULT_SINK_ID=$(pw-play --list-targets | sed -n 's/^*[[:space:]]*\([[:digit:]]\+\):.*$/\1/p')
-    #DEFAULT_SINK=$(pw-play --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
-    VOLUME=$(pactl list sinks | sed -n "/Sink #''${DEFAULT_SINK_ID}/,/Volume/ s!^[[:space:]]\+Volume:.* \([[:digit:]]\+\)%.*!\1!p" | head -n1)
-    IS_MUTED=$(pactl list sinks | sed -n "/Sink #''${DEFAULT_SINK_ID}/,/Mute/ s/Mute: \(yes\)/\1/p")
+    DEFAULT_SOURCE=$(pw-record --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: source description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
+    DEFAULT_SINK=$(pw-play --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: sink description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
+    VOLUME=$(pamixer --get-volume-human)
 
-    action=$1
     if [ "''${action}" == "up" ]; then
-        pactl set-sink-volume @DEFAULT_SINK@ +10%
+        pamixer --increase 10
     elif [ "''${action}" == "down" ]; then
-        pactl set-sink-volume @DEFAULT_SINK@ -10%
+        pamixer --decrease 10
     elif [ "''${action}" == "mute" ]; then
-        pactl set-sink-mute @DEFAULT_SINK@ toggle
-    else
-        if [ "''${IS_MUTED}" != "" ]; then
-            echo " ''${DEFAULT_SOURCE} |   MUTED ''${DEFAULT_SINK}"
-        else
-            echo " ''${DEFAULT_SOURCE} |    ''${VOLUME}%" # ''${DEFAULT_SINK}"
-        fi
+        pamixer --toggle-mute
     fi
+
+    echo " ''${DEFAULT_SOURCE} |   ''${VOLUME}"
 }
 
 main "$@"
