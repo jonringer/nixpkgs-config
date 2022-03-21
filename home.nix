@@ -95,7 +95,7 @@ in
         User root
 
       Host external
-        HostName 24.17.131.201
+        HostName jonringer.us
         Port 2222
         IdentityFile /home/jon/.ssh/id_rsa
         ForwardAgent yes
