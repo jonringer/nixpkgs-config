@@ -11,15 +11,21 @@ function main() {
     DEFAULT_SINK=$(pw-play --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: sink description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
     VOLUME=$(pamixer --get-volume-human)
 
-    if [ "''${action}" == "up" ]; then
-        pamixer --increase 10
-    elif [ "''${action}" == "down" ]; then
-        pamixer --decrease 10
-    elif [ "''${action}" == "mute" ]; then
-        pamixer --toggle-mute
-    fi
+    case $1 in
+        "up")
+            pamixer --increase 10
+            ;;
+        "down")
+            pamixer --decrease 10
+            ;;
+        "mute")
+            pamixer --toggle-mute
+            ;;
+        *)
 
-    echo " ''${DEFAULT_SOURCE} |   ''${VOLUME}"
+        echo " ''${DEFAULT_SOURCE} |   ''${VOLUME}"
+    esac
+
 }
 
 main "$@"
