@@ -17,5 +17,5 @@ extraSpecialArgs = {
 
 To apply changes:
 ```bash
-$ home-manager switch
+$ home-manager switch --flake .#<configuration>
 ```
