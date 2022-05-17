@@ -7,8 +7,6 @@ writeShellScript "pipewire.sh" ''
 PATH=${lib.makeBinPath [ coreutils gnused pamixer pulseaudio pipewire ]}
 
 function main() {
-    DEFAULT_SOURCE=$(pw-record --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: source description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
-    DEFAULT_SINK=$(pw-play --list-targets | sed -n 's/^*[[:space:]]*[[:digit:]]\+: sink description="\(.*\)" prio=[[:digit:]]\+$/\1/p')
     VOLUME=$(pamixer --get-volume-human)
 
     case $1 in
@@ -23,7 +21,7 @@ function main() {
             ;;
         *)
 
-        echo " ''${DEFAULT_SOURCE} |   ''${VOLUME}"
+        echo "''${VOLUME}"
     esac
 
 }
