@@ -12,6 +12,7 @@ pkgs: withGUI: with pkgs; [
   exa
   fd
   git
+  git-absorb
   gitAndTools.hub
   ghc
   glances
