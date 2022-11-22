@@ -85,6 +85,9 @@ pkgs:
     set foldlevelstart=99
     set foldcolumn=0
 
+    " Displays column at character
+    set colorcolumn=80
+
     set list
     set listchars=tab:>-
 

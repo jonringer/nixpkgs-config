@@ -108,6 +108,7 @@ in
 
       Host *
         ForwardAgent yes
+        AddKeysToAgent yes
         GSSAPIAuthentication no
         RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
       '';
@@ -170,6 +171,7 @@ in
         rebase=true;
       };
       mergetool.prompt = "false";
+      git.path = toString pkgs.git;
     };
     includes = [
       # use different signing key
@@ -183,6 +185,16 @@ in
       #    };
       #  };
       #}
+      {
+        condition = "gitdir:~/comm/comm";
+        contents = {
+          user = {
+            name = "Jonathan Ringer";
+            email = "jonathan.ringer@comm.app";
+            signingKey = "SHA256:KtR4tLVU9XtEqWk5V1IuBfpZ/vvtAtSxxE49EE47MWQ";
+          };
+        };
+      }
       # prevent background gc thread from constantly blocking reviews
       {
         condition = "gitdir:~/projects/nixpkgs";
