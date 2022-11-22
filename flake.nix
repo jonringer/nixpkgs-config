@@ -51,7 +51,6 @@
     };
 
     homeConfigurations.mac-mini = mkHomeConfiguration {
-      system = "aarch64-darwin";
       extraSpecialArgs = {
         withGUI = false;
         isDesktop = false;

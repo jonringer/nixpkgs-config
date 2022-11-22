@@ -17,5 +17,5 @@ extraSpecialArgs = {
 
 To apply changes:
 ```bash
-$ home-manager switch --flake .#<configuration>
+$ nix run . -- switch --flake .#jon
 ```
