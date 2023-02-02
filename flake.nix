@@ -27,15 +27,13 @@
           localOverlay
         ];
         inherit system;
+        config.allowUnfree = true;
       };
 
       mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration (rec {
-        system = args.system or "x86_64-linux";
-        configuration = import ./home.nix;
-        homeDirectory = "/home/jon";
-        username = "jon";
-        pkgs = pkgsForSystem system;
-      } // args);
+        modules = [ (import ./home.nix) ];
+        pkgs = pkgsForSystem (args.system or "x86_64-linux");
+      } // { inherit (args) extraSpecialArgs; });
 
     in utils.lib.eachSystem [ "x86_64-linux" ] (system: rec {
       legacyPackages = pkgsForSystem system;

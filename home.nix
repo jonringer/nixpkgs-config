@@ -18,20 +18,11 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = packages pkgs withGUI;
+  home.homeDirectory = "/home/jon";
+  home.username = "jon";
+  home.stateVersion = "21.11";
 
   home.file.".config/nvim/coc-settings.json".source = ./coc-settings.json;
-
-  services.picom = mkIf withGUI {
-    enable = true;
-    inactiveOpacity = "0.8";
-    inactiveDim = "0.15";
-    fadeExclude = [
-      "window_type *= 'menu'"
-      "name ~= 'Firefox\$'"
-      "focused = 1"
-    ];
-    vSync = true; # workaround with nvidia drivers
-  };
 
   home.file.".config/polybar/pipewire.sh" = mkIf withGUI {
     source = pkgs.polybar-pipewire;

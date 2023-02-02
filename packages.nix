@@ -50,12 +50,6 @@ pkgs: withGUI: with pkgs; [
   # so neovim can copy to clipboard
   xclip
 ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-  # dotnet
-  (with dotnetCorePackages; combinePackages [
-    sdk_3_1
-    sdk_5_0
-  ])
-
   mono
   niv
   ntfs3g
