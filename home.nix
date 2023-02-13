@@ -182,16 +182,6 @@ in
       #    };
       #  };
       #}
-      {
-        condition = "gitdir:~/comm/";
-        contents = {
-          user = {
-            name = "Jonathan Ringer";
-            email = "jonathan.ringer@comm.app";
-            signingKey = "SHA256:KtR4tLVU9XtEqWk5V1IuBfpZ/vvtAtSxxE49EE47MWQ";
-          };
-        };
-      }
       # prevent background gc thread from constantly blocking reviews
       {
         condition = "gitdir:~/projects/nixpkgs";

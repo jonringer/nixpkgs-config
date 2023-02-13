@@ -35,7 +35,7 @@
         pkgs = pkgsForSystem (args.system or "x86_64-linux");
       } // { inherit (args) extraSpecialArgs; });
 
-    in utils.lib.eachSystem [ "x86_64-linux" ] (system: rec {
+    in utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ] (system: rec {
       legacyPackages = pkgsForSystem system;
   }) // {
     # non-system suffixed items should go here
@@ -80,5 +80,6 @@
     };
 
     inherit home-manager;
+    inherit (home-manager) packages;
   };
 }
