@@ -1,6 +1,6 @@
 # nixpkgs-config
 
-My home nixos configuration
+My home-manager configuration. Meant to work across linux and macOS.
 
 ```bash
 mkdir -p ~/.config/
