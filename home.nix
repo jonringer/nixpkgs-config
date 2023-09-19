@@ -6,14 +6,14 @@ let
   packages = import ./packages.nix;
 
   # hacky way of determining which machine I'm running this from
-  inherit (specialArgs) withGUI isDesktop networkInterface localOverlay;
+  inherit (specialArgs) withGUI isDesktop networkInterface;
 
   inherit (lib) mkIf;
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ localOverlay ];
+  nixpkgs.overlays = [ ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -25,7 +25,7 @@ in
   home.file.".config/nvim/coc-settings.json".source = ./coc-settings.json;
 
   home.file.".config/polybar/pipewire.sh" = mkIf withGUI {
-    source = pkgs.polybar-pipewire;
+    source = pkgs.callPackage ./nix/polybar.nix { };
     executable = true;
   };
   services.polybar = mkIf withGUI {
@@ -37,7 +37,8 @@ in
     };
     script = ''
       for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-        MONITOR=$m polybar nord &
+        export MONITOR="$m"
+        polybar nord &
       done
     '';
   };

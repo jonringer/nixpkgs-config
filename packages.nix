@@ -9,7 +9,7 @@ pkgs: withGUI: with pkgs; [
 
   dbus
   direnv
-  exa
+  eza
   fd
   git
   git-absorb
@@ -25,7 +25,7 @@ pkgs: withGUI: with pkgs; [
   nix-index
   nix-template
   nix-update
-  nixpkgs-review-fixed
+  nixpkgs-review
   nodejs # needed for coc vim plugins
   openal
   perl # for fzf history

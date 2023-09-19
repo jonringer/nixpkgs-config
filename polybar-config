@@ -50,7 +50,6 @@ monitor = ${env:MONITOR}
 ;		FONTS
 ;---------------------------------------
 
-font-0 = TerminessTTF Nerd Font:weight=bold:size=10;2
 
 ;---------------------------------------
 ;	     MODULES LAYOUT
@@ -77,12 +76,6 @@ label-disconnected-padding = 1
 format-disconnected-foreground = ${colors.black}
 format-disconnected-background = ${colors.red}
 format-disconnected-underline = ${colors.red1}
-ramp-signal-0 = 😱
-ramp-signal-1 = 😠
-ramp-signal-2 = 😒
-ramp-signal-3 = 😊
-ramp-signal-4 = 😃
-ramp-signal-5 = 😈
 
 ;---------------------------------------
 ;	     STORAGE
