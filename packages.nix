@@ -73,12 +73,12 @@ pkgs: withGUI: with pkgs; [
     enableFPS = true;
   })
   pavucontrol  # pulseaudio configuration
+  jetbrains.pycharm-community
   lutris
   nerdfonts
   obs-studio
   #shutter # screenshots
   spotify
-  teams
   vlc
 
   tmate
