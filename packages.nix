@@ -75,7 +75,6 @@ pkgs: withGUI: with pkgs; [
   pavucontrol  # pulseaudio configuration
   jetbrains.pycharm-community
   lutris
-  nerdfonts
   obs-studio
   #shutter # screenshots
   spotify
