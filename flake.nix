@@ -16,7 +16,7 @@
       };
 
       mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration (rec {
-        modules = [ (import ./home.nix) ];
+        modules = [ (import ./home.nix) ] ++ (args.modules or []);
         pkgs = pkgsForSystem (args.system or "x86_64-linux");
       } // { inherit (args) extraSpecialArgs; });
 
@@ -43,6 +43,19 @@
     };
 
     homeConfigurations.laptop = mkHomeConfiguration {
+      extraSpecialArgs = {
+        withGUI = true;
+        isDesktop = true;
+        networkInterface = "wlp1s0";
+      };
+    };
+
+    homeConfigurations.work = mkHomeConfiguration {
+      modules = [ ({lib,...}:
+      {
+        home.username = lib.mkForce "jringer";
+        home.homeDirectory = lib.mkForce "/home/jringer";
+      })];
       extraSpecialArgs = {
         withGUI = true;
         isDesktop = true;
