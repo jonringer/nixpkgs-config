@@ -105,12 +105,12 @@ in
         Port 22
         IdentityFile /home/jon/.ssh/id_rsa
         User jon
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
 
       Host *
         ForwardAgent yes
         AddKeysToAgent yes
         GSSAPIAuthentication no
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
       '';
   };
   programs.fzf.enable = true;
