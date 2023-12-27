@@ -4,7 +4,7 @@ pkgs:
   viAlias = true;
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
-    #coc-nvim
+    coc-nvim
     editorconfig-vim
     fzf-vim
     fzfWrapper
