@@ -7,6 +7,7 @@ pkgs: withGUI: with pkgs; [
   cargo
   cmake
 
+  deadnix
   dbus
   direnv
   eza
@@ -24,7 +25,9 @@ pkgs: withGUI: with pkgs; [
   manix
   nix-index
   nix-template
+  nix-tree
   nix-update
+  nixpkgs-fmt
   nixpkgs-review
   nodejs # needed for coc vim plugins
   openal

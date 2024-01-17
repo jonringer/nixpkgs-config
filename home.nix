@@ -131,7 +131,7 @@ in
     userEmail = "jonringer117@gmail.com";
     signing = {
       key = "5C841D3CFDFEC4E0";
-      signByDefault = true;
+      signByDefault = false;
     };
     aliases = {
       a = "add";
@@ -175,23 +175,13 @@ in
     };
     includes = [
       # use different signing key
-      #{
-      #  condition = "gitdir:~/work/";
-      #  contents = {
-      #    user = {
-      #      name = "Jonathan Ringer";
-      #      email = "jonathan.ringer@iohk.io";
-      #      signingKey = "523B37EC8FB6E3A2";
-      #    };
-      #  };
-      #}
       {
-        condition = "gitdir:~/comm/comm";
+        condition = "gitdir:~/work/";
         contents = {
           user = {
             name = "Jonathan Ringer";
-            email = "jonathan.ringer@comm.app";
-            signingKey = "SHA256:KtR4tLVU9XtEqWk5V1IuBfpZ/vvtAtSxxE49EE47MWQ";
+            email = "jringer@anduril.com";
+            signingKey = "7B8CFA0F33328D9A";
           };
         };
       }
