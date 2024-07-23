@@ -34,7 +34,6 @@ pkgs: withGUI: with pkgs; [
   perl # for fzf history
   python3
   ranger
-  rnix-lsp
   rustc
   # stack broken
 
