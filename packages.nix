@@ -52,20 +52,16 @@ pkgs: withGUI: with pkgs; [
 
   # so neovim can copy to clipboard
   xclip
+  wl-clipboard
 ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-  mono
-  niv
+  #mono
+  #niv
   ntfs3g
   usbutils
-
-  # for work
-  vault
-  consul
 
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
   brightnessctl
-  enlightenment.terminology
   firefox
   discord
   (dwarf-fortress-packages.dwarf-fortress-full.override {
@@ -77,9 +73,7 @@ pkgs: withGUI: with pkgs; [
   pavucontrol  # pulseaudio configuration
   jetbrains.pycharm-community
   lutris
-  obs-studio
   #shutter # screenshots
-  spotify
   vlc
 
   tmate

@@ -130,6 +130,10 @@ pkgs:
     nnoremap <leader>c :Commits<CR>
     nnoremap <leader>C :BCommits<CR>
 
+    " Wayland copy
+    nnoremap <C-@> :call system("wl-copy", @")<CR>
+    xnoremap <silent> <leader>y :w !wl-copy<CR><CR>
+
     let g:cue_fmt_on_save = 0
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_language_server =
