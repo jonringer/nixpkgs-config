@@ -1,5 +1,8 @@
 # nixpkgs-config
 
+Originally, this was for managing my `~/.config/nixpkgs` files, but evolved into
+my home-manager configuration.
+
 My home-manager configuration. Meant to work across linux and macOS.
 
 ```bash
@@ -18,4 +21,7 @@ extraSpecialArgs = {
 To apply changes:
 ```bash
 $ nix run .#home-manager -- switch --flake .#<configuration>
+# or
+$ nix develop
+# home-manager -- switch --flake .#<configuration>
 ```

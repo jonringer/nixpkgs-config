@@ -22,6 +22,9 @@
 
     in utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ] (system: rec {
       legacyPackages = pkgsForSystem system;
+      devShells.default = with legacyPackages; mkShell {
+        packages = [ home-manager.packages.${system}.default ];
+      };
   }) // {
     # non-system suffixed items should go here
     nixosModules.home = import ./home.nix; # attr set or list
