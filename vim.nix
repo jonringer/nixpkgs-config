@@ -58,7 +58,7 @@ pkgs:
     semshi
 
     # rust
-    coc-rust-analyzer
+    #coc-rust-analyzer
     YouCompleteMe
     vim-toml
 
@@ -67,7 +67,7 @@ pkgs:
   ];
 
   extraPackages = with pkgs; [
-    rust-analyzer
+    #rust-analyzer
   ];
 
   extraConfig = ''
