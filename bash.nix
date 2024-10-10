@@ -220,6 +220,15 @@ pkgs: {
       popd
     }
 
+    by_name_to_core() {
+      local from_dir="$(dirname "$(realpath "$1")")"
+      local dir="$(basename "$from_dir")"
+      local to="$HOME/projects/core-pkgs/pkgs"
+
+      cp -r "$from_dir" "$to"
+      mv "$to/$dir/package.nix" "$to/$dir/default.nix"
+    }
+
     unh() {
       update_nixpkgs_homepage $@
     }
