@@ -16,6 +16,7 @@ pkgs: {
     ".6"="cd ../../../../../..";
     bro="bitte rebuild --only";
     g="git";
+    grbc="git rebase --continue";
     gco="git checkout";
     gst="git status";
     nfl="nix flake lock";
@@ -115,6 +116,10 @@ pkgs: {
     # Search git log, preview shows subject, body, and diff
     fl() {
       git log --oneline --color=always | fzf --ansi --preview="echo {} | cut -d ' ' -f 1 | xargs -I @ sh -c 'git log --pretty=medium -n 1 @; git diff @^ @' | bat --color=always" | cut -d ' ' -f 1 | xargs git log --pretty=short -n 1
+    }
+
+    nix_deps() {
+      nix-store -qR "$1" | xargs du -hd0 | sort -rh
     }
 
     nbfkg() {
