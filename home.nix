@@ -128,6 +128,7 @@ in
     lfs.enable = true;
     userName = "Jonathan Ringer";
     userEmail = "jonringer117@gmail.com";
+    difftastic.enable = true;
     signing = {
       key = "5C841D3CFDFEC4E0";
       signByDefault = false;

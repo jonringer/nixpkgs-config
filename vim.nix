@@ -4,6 +4,7 @@ pkgs:
   viAlias = true;
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
+    coc-clangd
     coc-nvim
     editorconfig-vim
     fzf-vim
@@ -59,7 +60,7 @@ pkgs:
 
     # rust
     #coc-rust-analyzer
-    YouCompleteMe
+    #YouCompleteMe
     vim-toml
 
     # sql

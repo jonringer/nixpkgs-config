@@ -22,6 +22,8 @@ pkgs: withGUI: with pkgs; [
   hicolor-icon-theme # lutris
   htop
 
+  llvm
+
   manix
   nix-index
   nix-template

@@ -5,6 +5,18 @@
       "filetypes": [
         "nix"
       ]
+    },
+    "coc-clangd": {
+      "command": "clangd",
+      "filetypes": [
+        "h",
+        "hpp",
+        "hh",
+        "c",
+        "cc",
+        "cpp"
+      ]
     }
+
   }
 }
