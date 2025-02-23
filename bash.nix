@@ -32,7 +32,6 @@ pkgs: {
 
   initExtra = ''
     set -o vi  # enable vi-like control
-    export EDITOR=nvim
 
     # Fix color codes in man pages. Why GNU hates sane defaults, we will never know
     export export GROFF_NO_SGR=1
@@ -60,6 +59,7 @@ pkgs: {
 
     # bat utilities
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export EDITOR=vim
 
     if [[ "$OSTYPE" == "darwin"* ]]; then
       # on mac, give support to wombat256 colors

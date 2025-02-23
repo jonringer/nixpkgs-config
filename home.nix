@@ -22,8 +22,6 @@ in
   home.username = "jon";
   home.stateVersion = "21.11";
 
-  home.file.".config/nvim/coc-settings.json".source = ./coc-settings.json;
-
   home.file.".config/polybar/pipewire.sh" = mkIf withGUI {
     source = pkgs.callPackage ./nix/polybar.nix { };
     executable = true;

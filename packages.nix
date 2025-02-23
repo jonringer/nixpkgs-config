@@ -48,6 +48,7 @@ pkgs: withGUI: with pkgs; [
   fzf
   ripgrep
   elmPackages.elm-format
+  rust-analyzer
 
   #haskell dependencies
   haskellPackages.hlint
