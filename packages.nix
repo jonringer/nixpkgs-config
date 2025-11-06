@@ -68,7 +68,6 @@ pkgs: withGUI: with pkgs; [
   discord
   dwarf-fortress-packages.dwarf-fortress-full
   pavucontrol  # pulseaudio configuration
-  jetbrains.pycharm-community
   lutris
   #shutter # screenshots
   vlc
