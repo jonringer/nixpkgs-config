@@ -22,25 +22,6 @@ in
   home.username = "jon";
   home.stateVersion = "21.11";
 
-  home.file.".config/polybar/pipewire.sh" = mkIf withGUI {
-    source = pkgs.callPackage ./nix/polybar.nix { };
-    executable = true;
-  };
-  services.polybar = mkIf withGUI {
-    enable = true;
-    package = pkgs.polybarFull;
-    config = pkgs.replaceVars ./polybar-config {
-      interface = networkInterface;
-    };
-    script = ''
-      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-        export MONITOR="$m"
-        polybar nord &
-      done
-    '';
-  };
-
-  services.lorri.enable = isLinux;
   services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
   services.gpg-agent.enable = isLinux;
@@ -114,10 +95,6 @@ in
   programs.vscode = mkIf withGUI {
     enable = true;
     package = pkgs.vscode-fhsWithPackages (pkgs: with pkgs; [ zlib rustup ]);
-    #extensions = with pkgs.vscode-extensions; [
-    #  vscodevim.vim
-    #  ms-python.python
-    #];
   };
 
   programs.git = {
