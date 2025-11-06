@@ -14,7 +14,6 @@ pkgs: withGUI: with pkgs; [
   fd
   git
   git-absorb
-  gitAndTools.hub
   ghc
   glances
   gnupg                         # gpg command
@@ -67,12 +66,7 @@ pkgs: withGUI: with pkgs; [
   brightnessctl
   firefox
   discord
-  (dwarf-fortress-packages.dwarf-fortress-full.override {
-    dfVersion = "0.47.04";
-    theme = dwarf-fortress-packages.themes.phoebus;
-    enableIntro = false;
-    enableFPS = true;
-  })
+  dwarf-fortress-packages.dwarf-fortress-full
   pavucontrol  # pulseaudio configuration
   jetbrains.pycharm-community
   lutris

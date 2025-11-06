@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -p gitAndTools.hub -p jq -p xsel -i bash
+#!nix-shell -p hub -p jq -p xsel -i bash
 # After manually reviewing a PR on the UI, use this script to run nixpkgs-review
 # and merge it if the package and all reverse dependencies pass.
 set -euo pipefail
