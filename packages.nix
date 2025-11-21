@@ -5,6 +5,7 @@ pkgs: withGUI: with pkgs; [
   bottom
   cabal-install
   cargo
+  claude-code
   cmake
 
   deadnix

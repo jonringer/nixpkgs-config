@@ -45,7 +45,7 @@ in
   programs.jq.enable = true;
   programs.ssh = {
     enable = true;
-    forwardAgent = true;
+    matchBlocks."*".forwardAgent = true;
     extraConfig = ''
       Include ~/.ssh/config.d/*
 
@@ -100,14 +100,13 @@ in
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "Jonathan Ringer";
-    userEmail = "jonringer117@gmail.com";
-    difftastic.enable = true;
+    settings.user.name = "Jonathan Ringer";
+    settings.user.email = "jonringer117@gmail.com";
     signing = {
       key = "5C841D3CFDFEC4E0";
       signByDefault = false;
     };
-    aliases = {
+    settings.alias = {
       a = "add";
       c = "commit";
       ca = "commit --amend";
@@ -136,7 +135,7 @@ in
       rs = "remote show";
       st = "status";
     };
-    extraConfig = {
+    settings = {
       merge = {
         tool = "vimdiff";
         conflictstyle = "diff3";
