@@ -4,6 +4,7 @@ pkgs: withGUI: with pkgs; [
   binutils
   bottom
   cabal-install
+  cachix
   cargo
   claude-code
   cmake
