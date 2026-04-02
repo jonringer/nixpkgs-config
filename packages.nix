@@ -68,7 +68,7 @@ pkgs: withGUI: with pkgs; [
   brightnessctl
   firefox
   discord
-  dwarf-fortress-packages.dwarf-fortress-full
+  # dwarf-fortress-packages.dwarf-fortress-full
   pavucontrol  # pulseaudio configuration
   lutris
   #shutter # screenshots
