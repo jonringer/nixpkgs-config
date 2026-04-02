@@ -171,6 +171,7 @@ in
   };
 
   xdg.enable = true;
+  programs.waybar.enable = true;
 
   programs.obs-studio = {
     enable = withGUI;
