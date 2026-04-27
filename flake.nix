@@ -56,13 +56,13 @@
     homeConfigurations.work = mkHomeConfiguration {
       modules = [ ({lib,...}:
       {
-        home.username = lib.mkForce "jringer";
-        home.homeDirectory = lib.mkForce "/home/jringer";
+        home.username = lib.mkForce "jon";
+        home.homeDirectory = lib.mkForce "/home/jon";
       })];
       extraSpecialArgs = {
         withGUI = true;
         isDesktop = true;
-        networkInterface = "wlp1s0";
+        networkInterface = "wlp192s0";
       };
     };
 

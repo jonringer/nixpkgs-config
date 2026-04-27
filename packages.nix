@@ -8,6 +8,7 @@ pkgs: withGUI: with pkgs; [
   cargo
   claude-code
   cmake
+  chromium
 
   deadnix
   dbus

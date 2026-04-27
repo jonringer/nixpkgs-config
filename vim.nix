@@ -14,7 +14,7 @@ pkgs:
 
     editorconfig-vim
     fzf-vim
-    fzfWrapper
+    fzf-wrapper
     #LanguageClient-neovim
     lightline-vim
     nerdtree
@@ -27,7 +27,7 @@ pkgs:
     #vimproc-vim
 
     # themes
-    wombat256
+    wombat256-vim
 
     # language packages
     # Elixir
@@ -47,7 +47,7 @@ pkgs:
     neco-ghc
     haskell-vim
     hlint-refactor-vim
-    ghc-mod-vim
+    ghcmod-vim
 
     # Hocon
     vim-hocon
