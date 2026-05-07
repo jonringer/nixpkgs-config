@@ -69,6 +69,7 @@ pkgs: {
     if [ -e "$HOME"/.config/git_token ]; then
         export GITHUB_API_TOKEN=$(cat "$HOME"/.config/git_token)
         export GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
+        export DEV_GITHUB_TOKEN=$(cat "$HOME"/.config/git_token)
     fi
 
     fetch_hashi_creds() {
@@ -240,6 +241,8 @@ pkgs: {
     unh() {
       update_nixpkgs_homepage $@
     }
+
+    [[ -x $HOME/.local/state/tec/profiles/base/current/global/init ]] && [[ $- == *i* ]] && eval "$($HOME/.local/state/tec/profiles/base/current/global/init bash)"
   '';
 }
 
