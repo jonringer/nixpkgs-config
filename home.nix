@@ -45,50 +45,50 @@ in
   programs.jq.enable = true;
   programs.ssh = {
     enable = true;
-    matchBlocks."*".forwardAgent = true;
-    extraConfig = ''
-      Include ~/.ssh/config.d/*
-
-      Host mac
-        HostName 10.0.0.236
-        Port 22
-        IdentityFile /home/jon/.ssh/id_rsa
-        ForwardAgent yes
-        User jon
-        ServerAliveInterval 60
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
-
-      Host build
-        HostName 10.0.0.21
-        Port 22
-        IdentityFile /home/jon/.ssh/id_rsa
-        User root
-
-      Host external
-        HostName jonringer.us
-        Port 2222
-        IdentityFile /home/jon/.ssh/id_rsa
-        ForwardAgent yes
-        User jon
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
-
-      Host server
-        HostName 10.0.0.21
-        Port 22
-        IdentityFile /home/jon/.ssh/id_rsa
-        User jon
-
-      Host pi
-        HostName 10.0.0.220
-        Port 22
-        IdentityFile /home/jon/.ssh/id_rsa
-        User jon
-        RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
-
-      Host *
-        ForwardAgent yes
-        AddKeysToAgent yes
-      '';
+    enableDefaultConfig = false;
+    extraConfig = "Include ~/.ssh/config.d/*";
+    matchBlocks = {
+      "mac" = {
+        hostname = "10.0.0.236";
+        port = 22;
+        identityFile = "/home/jon/.ssh/id_rsa";
+        forwardAgent = true;
+        user = "jon";
+        serverAliveInterval = 60;
+        extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
+      };
+      "build" = {
+        hostname = "10.0.0.21";
+        port = 22;
+        identityFile = "/home/jon/.ssh/id_rsa";
+        user = "root";
+      };
+      "external" = {
+        hostname = "jonringer.us";
+        port = 2222;
+        identityFile = "/home/jon/.ssh/id_rsa";
+        forwardAgent = true;
+        user = "jon";
+        extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
+      };
+      "server" = {
+        hostname = "10.0.0.21";
+        port = 22;
+        identityFile = "/home/jon/.ssh/id_rsa";
+        user = "jon";
+      };
+      "pi" = {
+        hostname = "10.0.0.220";
+        port = 22;
+        identityFile = "/home/jon/.ssh/id_rsa";
+        user = "jon";
+        extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
+      };
+      "*" = {
+        forwardAgent = true;
+        extraOptions.AddKeysToAgent = "yes";
+      };
+    };
   };
   programs.fzf.enable = true;
 
