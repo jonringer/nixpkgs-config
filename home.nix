@@ -72,7 +72,7 @@ in
         extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
       };
       "server" = {
-        hostname = "10.0.0.21";
+        hostname = "10.0.0.41";
         port = 22;
         identityFile = "/home/jon/.ssh/id_rsa";
         user = "jon";
