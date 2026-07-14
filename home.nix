@@ -170,6 +170,26 @@ in
     ];
   };
 
+  home.file.".claude/settings.json".text = builtins.toJSON {
+    permissions = {
+      allow = [
+        "Read"
+        "Glob"
+        "Grep"
+        "Bash(*)"
+        "WebFetch"
+        "WebSearch"
+        "Agent"
+      ];
+    };
+    enabledPlugins = {
+      "caveman@caveman" = true;
+      "rust-analyzer-lsp@claude-plugins-official" = true;
+    };
+    alwaysThinkingEnabled = false;
+    effortLevel = "high";
+  };
+
   xdg.enable = true;
   programs.waybar.enable = true;
 
