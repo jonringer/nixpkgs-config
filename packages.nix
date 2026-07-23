@@ -42,6 +42,7 @@ pkgs: withGUI: with pkgs; [
   # stack broken
 
   tig
+  tmux
   tree
   watson
   wget
@@ -66,7 +67,9 @@ pkgs: withGUI: with pkgs; [
 
 ] ++ pkgs.lib.optionals withGUI [
   # intended to be installed with an X11 or wayland session
+  brave
   brightnessctl
+  chromium
   firefox
   discord
   # dwarf-fortress-packages.dwarf-fortress-full
