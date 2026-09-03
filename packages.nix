@@ -37,6 +37,7 @@ pkgs: withGUI: with pkgs; [
   openal
   perl # for fzf history
   python3
+  quint
   ranger
   rustc
   # stack broken
