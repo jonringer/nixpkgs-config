@@ -91,6 +91,7 @@ in
       };
       "*" = {
         forwardAgent = true;
+        identitiesOnly = true;
         extraOptions.AddKeysToAgent = "yes";
       };
     };
