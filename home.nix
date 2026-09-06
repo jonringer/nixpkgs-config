@@ -24,9 +24,14 @@ in
 
   services.pulseeffects.enable = false;
   services.pulseeffects.preset = "vocal_clarity";
-  services.gpg-agent.enable = isLinux;
-  services.gpg-agent.enableExtraSocket = withGUI;
-  services.gpg-agent.enableSshSupport = isLinux;
+  services.gpg-agent = {
+    enable = isLinux;
+    enableExtraSocket = withGUI;
+    enableSshSupport = isLinux;
+    pinentryPackage = if withGUI then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
+    defaultCacheTtl = 7200;
+    defaultCacheTtlSsh = 7200;
+  };
 
   programs.alacritty = (import ./alacritty.nix) withGUI;
   programs.bash = bashsettings;
@@ -51,7 +56,7 @@ in
       "mac" = {
         hostname = "10.0.0.236";
         port = 22;
-        identityFile = "/home/jon/.ssh/id_rsa";
+        identityFile = "/home/jon/.ssh/id_ed25519";
         forwardAgent = true;
         user = "jon";
         serverAliveInterval = 60;
@@ -60,13 +65,13 @@ in
       "build" = {
         hostname = "10.0.0.21";
         port = 22;
-        identityFile = "/home/jon/.ssh/id_rsa";
+        identityFile = "/home/jon/.ssh/id_ed25519";
         user = "root";
       };
       "external" = {
         hostname = "jonringer.us";
         port = 2222;
-        identityFile = "/home/jon/.ssh/id_rsa";
+        identityFile = "/home/jon/.ssh/id_ed25519";
         forwardAgent = true;
         user = "jon";
         extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
@@ -74,13 +79,13 @@ in
       "server" = {
         hostname = "10.0.0.41";
         port = 22;
-        identityFile = "/home/jon/.ssh/id_rsa";
+        identityFile = "/home/jon/.ssh/id_ed25519";
         user = "jon";
       };
       "pi" = {
         hostname = "10.0.0.220";
         port = 22;
-        identityFile = "/home/jon/.ssh/id_rsa";
+        identityFile = "/home/jon/.ssh/id_ed25519";
         user = "jon";
         extraOptions.RemoteForward = "/run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra";
       };
