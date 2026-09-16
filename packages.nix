@@ -17,6 +17,7 @@ pkgs: withGUI: with pkgs; [
   fd
   git
   git-absorb
+  gh
   ghc
   glances
   gnupg                         # gpg command
