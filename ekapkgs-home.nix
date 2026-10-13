@@ -68,6 +68,20 @@ in
     # --- programs.direnv ---
     programs.direnv.enable = true;
 
+    # --- programs.fzf ---
+    programs.fzf.enable = true;
+
+    # --- programs.htop ---
+    programs.htop = {
+      enable = true;
+      settings = {
+        left_meters = [ "LeftCPUs2" "Memory" "Swap" ];
+        right_meters = [ "RightCPUs2" "Tasks" "LoadAverage" "Uptime" ];
+        show_program_path = 0;
+        tree_view = 1;
+      };
+    };
+
     # --- programs.bash ---
     programs.bash = {
       enable = true;
@@ -217,14 +231,6 @@ in
     };
 
     # --- home.file ---
-
-    # htop config
-    file.".config/htop/htoprc".text = ''
-      left_meters=LeftCPUs2 Memory Swap
-      right_meters=RightCPUs2 Tasks LoadAverage Uptime
-      show_program_path=0
-      tree_view=1
-    '';
 
     # Neovim CoC settings
     file.".config/nvim/coc-settings.json".text = builtins.toJSON cocSettings;
