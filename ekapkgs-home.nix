@@ -52,6 +52,10 @@ in
     # --- Session environment ---
     sessionVariables = {
       EDITOR = "vim";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
+      XDG_CACHE_HOME = "$HOME/.cache";
     };
 
     sessionPath = [
@@ -60,6 +64,9 @@ in
     ];
 
     shellAliases = bashsettings.shellAliases;
+
+    # --- programs.direnv ---
+    programs.direnv.enable = true;
 
     # --- programs.bash ---
     programs.bash = {
@@ -210,6 +217,14 @@ in
     };
 
     # --- home.file ---
+
+    # htop config
+    file.".config/htop/htoprc".text = ''
+      left_meters=LeftCPUs2 Memory Swap
+      right_meters=RightCPUs2 Tasks LoadAverage Uptime
+      show_program_path=0
+      tree_view=1
+    '';
 
     # Neovim CoC settings
     file.".config/nvim/coc-settings.json".text = builtins.toJSON cocSettings;
