@@ -8,7 +8,6 @@ pkgs: withGUI: with pkgs; [
   cargo
   claude-code
   cmake
-  chromium
 
   deadnix
   dbus
@@ -22,6 +21,7 @@ pkgs: withGUI: with pkgs; [
   glances
   gnupg                         # gpg command
   gnumake
+  herdr
   hicolor-icon-theme # lutris
   htop
 

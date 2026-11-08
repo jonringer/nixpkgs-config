@@ -28,7 +28,7 @@ in
     enable = isLinux;
     enableExtraSocket = withGUI;
     enableSshSupport = isLinux;
-    pinentryPackage = if withGUI then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
+    pinentry.package = if withGUI then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
     defaultCacheTtl = 7200;
     defaultCacheTtlSsh = 7200;
   };

@@ -55,9 +55,6 @@ pkgs:
     # Nix
     vim-nix
 
-    # Csharp
-    vim-csharp
-
     # Powershell
     vim-ps1
 

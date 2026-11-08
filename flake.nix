@@ -3,7 +3,7 @@
 
   inputs = {
     utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:nixos/nixpkgs?rev=7a17139823551e1fb824ccca70540ff99dea0ea2";
+    nixpkgs.url = "github:nixos/nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # TODO: switch to github:ekala-project/corepkgs once home module
