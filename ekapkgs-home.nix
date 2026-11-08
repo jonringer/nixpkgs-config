@@ -12,7 +12,7 @@ let
   packages = import ./packages.nix;
 
   inherit (lib) mkIf;
-  inherit (pkgs.stdenv) isLinux isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
 
   # Build neovim with plugins via wrapNeovim (no programs.neovim module)
   neovimConfigured = pkgs.wrapNeovim pkgs.neovim-unwrapped {

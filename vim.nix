@@ -2,6 +2,8 @@ pkgs:
 {
   enable = true;
   defaultEditor = true;
+  withPython3 = true;
+  withRuby = true;
   coc.enable = true;
   coc.settings = import ./coc-settings.nix pkgs;
 

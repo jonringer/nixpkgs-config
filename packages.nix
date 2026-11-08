@@ -61,7 +61,7 @@ pkgs: withGUI: with pkgs; [
   # so neovim can copy to clipboard
   xclip
   wl-clipboard
-] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+] ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
   #mono
   #niv
   ntfs3g
